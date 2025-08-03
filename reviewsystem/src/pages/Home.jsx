@@ -90,24 +90,37 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-300 to-violet-100">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-400 via-purple-500 to-indigo-600"></div>
+      
+      {/* Floating orbs */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full animate-float blur-xl"></div>
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-white/10 rounded-full animate-float blur-xl" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full animate-float blur-xl" style={{ animationDelay: '2s' }}></div>
+      
+      {/* Additional floating particles */}
+      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-violet-300/30 rounded-full animate-float-particle"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-6 h-6 bg-purple-300/30 rounded-full animate-float-particle" style={{ animationDelay: '1.5s' }}></div>
+      <div className="absolute top-2/3 right-1/4 w-4 h-4 bg-white/20 rounded-full animate-float-particle" style={{ animationDelay: '3s' }}></div>
+
+      <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Review Hub</h1>
-            <p className="text-gray-600">{message}</p>
+        <div className="flex items-center justify-between mb-8 form-slide-in">
+          <div className="glass rounded-2xl p-6 border border-white/20">
+            <h1 className="text-3xl font-bold text-white mb-2">Review Hub</h1>
+            <p className="text-white/80">{message}</p>
           </div>
           <div className="flex gap-4">
             <button
               onClick={() => navigate("/review-form")}
-              className="bg-violet-600 text-white px-6 py-2 rounded-lg hover:bg-violet-700 transition-colors"
+              className="bg-gradient-to-r from-violet-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-violet-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover-lift"
             >
               Write a Review
             </button>
             <button
               onClick={logout}
-              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+              className="bg-gradient-to-r from-red-500 to-pink-600 text-white px-4 py-3 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover-lift"
             >
               Logout
             </button>
@@ -115,36 +128,36 @@ export default function Home() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-lg font-semibold mb-4">Filter Reviews</h2>
+        <div className="glass rounded-2xl shadow-2xl p-6 mb-8 border border-white/20 hover-lift form-fade-in">
+          <h2 className="text-lg font-semibold mb-4 text-white">Filter Reviews</h2>
           <div className="flex gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-white/80 mb-2">
                 Category
               </label>
               <select
                 value={filters.category}
                 onChange={(e) => handleFilterChange('category', e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
+                className="px-3 py-2 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus"
               >
                 {categories.map(category => (
-                  <option key={category} value={category}>
+                  <option key={category} value={category} className="bg-gray-800">
                     {category === "" ? "All Categories" : category.charAt(0).toUpperCase() + category.slice(1)}
                   </option>
                 ))}
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-white/80 mb-2">
                 Reaction
               </label>
               <select
                 value={filters.reactionType}
                 onChange={(e) => handleFilterChange('reactionType', e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
+                className="px-3 py-2 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus"
               >
                 {reactionTypes.map(type => (
-                  <option key={type} value={type}>
+                  <option key={type} value={type} className="bg-gray-800">
                     {type === "" ? "All Reactions" : type.charAt(0).toUpperCase() + type.slice(1)}
                   </option>
                 ))}
@@ -153,7 +166,7 @@ export default function Home() {
             <div className="flex items-end">
               <button
                 onClick={fetchReviews}
-                className="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 transition-colors"
+                className="bg-gradient-to-r from-violet-500 to-purple-600 text-white px-4 py-2 rounded-xl hover:from-violet-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover-lift"
               >
                 Apply Filters
               </button>
@@ -163,28 +176,33 @@ export default function Home() {
 
         {/* Reviews Grid */}
         {loading ? (
-          <div className="text-center py-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading reviews...</p>
+          <div className="text-center py-8 form-fade-in">
+            <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-400 mx-auto mb-4"></div>
+              <p className="text-white/80">Loading reviews...</p>
+            </div>
           </div>
         ) : reviews.length === 0 ? (
-          <div className="text-center py-8">
-            <p className="text-gray-600 text-lg">No reviews found. Be the first to write one!</p>
-            <button
-              onClick={() => navigate("/review-form")}
-              className="mt-4 bg-violet-600 text-white px-6 py-2 rounded-lg hover:bg-violet-700 transition-colors"
-            >
-              Write a Review
-            </button>
+          <div className="text-center py-8 form-fade-in">
+            <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
+              <p className="text-white/80 text-lg mb-4">No reviews found. Be the first to write one!</p>
+              <button
+                onClick={() => navigate("/review-form")}
+                className="bg-gradient-to-r from-violet-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-violet-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover-lift"
+              >
+                Write a Review
+              </button>
+            </div>
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {reviews.map((review) => (
-              <ReviewCard
-                key={review._id}
-                review={review}
-                onReaction={handleReaction}
-              />
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 form-fade-in">
+            {reviews.map((review, index) => (
+              <div key={review._id} style={{ animationDelay: `${index * 0.1}s` }} className="form-slide-in">
+                <ReviewCard
+                  review={review}
+                  onReaction={handleReaction}
+                />
+              </div>
             ))}
           </div>
         )}

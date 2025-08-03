@@ -58,22 +58,42 @@ export default function ReviewForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-300 to-violet-100 py-8 px-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
-            Write a Review
-          </h1>
+    <div className="min-h-screen relative overflow-hidden py-8 px-4">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600"></div>
+      
+      {/* Floating orbs */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full animate-float blur-xl"></div>
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-white/10 rounded-full animate-float blur-xl" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full animate-float blur-xl" style={{ animationDelay: '2s' }}></div>
+      
+      {/* Additional floating particles */}
+      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-emerald-300/30 rounded-full animate-float-particle"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-6 h-6 bg-teal-300/30 rounded-full animate-float-particle" style={{ animationDelay: '1.5s' }}></div>
+      <div className="absolute top-2/3 right-1/4 w-4 h-4 bg-white/20 rounded-full animate-float-particle" style={{ animationDelay: '3s' }}></div>
+
+      <div className="relative z-10 max-w-2xl mx-auto form-slide-in">
+        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 hover-lift form-fade-in">
+          {/* Header with icon */}
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow animate-bounce">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+            <h1 className="text-3xl font-bold text-white mb-2">Write a Review</h1>
+            <p className="text-white/70">Share your thoughts with the community</p>
+          </div>
           
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <div className="glass bg-red-500/20 border border-red-400/30 text-red-200 px-4 py-3 rounded-xl mb-6 animate-bounce">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+            <div className="relative group">
+              <label className="block text-sm font-medium text-white/80 mb-2">
                 Category *
               </label>
               <select
@@ -81,19 +101,20 @@ export default function ReviewForm() {
                 value={formData.category}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus"
               >
-                <option value="">Select a category</option>
+                <option value="" className="bg-gray-800">Select a category</option>
                 {categories.map(category => (
-                  <option key={category} value={category}>
+                  <option key={category} value={category} className="bg-gray-800">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </option>
                 ))}
               </select>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+            <div className="relative group">
+              <label className="block text-sm font-medium text-white/80 mb-2">
                 Name of the Work *
               </label>
               <input
@@ -103,12 +124,13 @@ export default function ReviewForm() {
                 onChange={handleChange}
                 required
                 placeholder="e.g., Attack on Titan, The Matrix, Breaking Bad..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus"
               />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+            <div className="relative group">
+              <label className="block text-sm font-medium text-white/80 mb-2">
                 Your Review *
               </label>
               <textarea
@@ -118,23 +140,31 @@ export default function ReviewForm() {
                 required
                 rows="8"
                 placeholder="Share your thoughts about this work..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent resize-none"
+                className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus resize-none"
               />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
             </div>
 
             <div className="flex gap-4">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 bg-violet-600 text-white py-2 px-4 rounded-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
               >
-                {isSubmitting ? "Posting..." : "Post Review"}
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                    Posting...
+                  </div>
+                ) : (
+                  "Post Review"
+                )}
               </button>
               
               <button
                 type="button"
                 onClick={() => navigate("/home")}
-                className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                className="flex-1 py-4 bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold rounded-xl hover:from-gray-600 hover:to-gray-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Cancel
               </button>
