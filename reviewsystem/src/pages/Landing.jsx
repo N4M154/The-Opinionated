@@ -15,23 +15,54 @@ import {
   Music,
   Tv,
 } from "lucide-react";
+import ThemeToggle from "../components/ThemeToggle";
 
 function Landing() {
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <header
+        className="fixed w-full border-b-2 border-violet-200 dark:border-none bg-violet-100/40 dark:bg-black/40 backdrop-blur-sm py-4 z-50 transition-all duration-300 shadow-[0_1px_50px_rgb(124,58,237)] dark:shadow-[0_10px_50px_rgba(0,0,0,1)]"
+        style={{
+          borderBottomLeftRadius: "1.5rem",
+          borderBottomRightRadius: "1.5rem",
+        }}
+      >
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <h1 className="text-xl font-light text-violet-500 ml-5">N4M154</h1>
+          <nav className="hidden md:flex space-x-6"></nav>
+          <div className="mr-5">
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
-      
+
       {/* Enhanced floating elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-20 animate-float blur-sm"></div>
-      <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full opacity-20 animate-float blur-sm" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-30 animate-float blur-sm" style={{ animationDelay: '2s' }}></div>
-      
+      <div
+        className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full opacity-20 animate-float blur-sm"
+        style={{ animationDelay: "1s" }}
+      ></div>
+      <div
+        className="absolute top-1/2 left-1/4 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-30 animate-float blur-sm"
+        style={{ animationDelay: "2s" }}
+      ></div>
+
       {/* Additional floating particles */}
       <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-purple-300/30 rounded-full animate-float-particle"></div>
-      <div className="absolute bottom-1/3 left-1/4 w-6 h-6 bg-pink-300/30 rounded-full animate-float-particle" style={{ animationDelay: '1.5s' }}></div>
-      <div className="absolute top-2/3 right-1/3 w-4 h-4 bg-white/20 rounded-full animate-float-particle" style={{ animationDelay: '3s' }}></div>
-      <div className="absolute top-1/4 left-1/3 w-10 h-10 bg-blue-300/20 rounded-full animate-float-particle" style={{ animationDelay: '0.5s' }}></div>
+      <div
+        className="absolute bottom-1/3 left-1/4 w-6 h-6 bg-pink-300/30 rounded-full animate-float-particle"
+        style={{ animationDelay: "1.5s" }}
+      ></div>
+      <div
+        className="absolute top-2/3 right-1/3 w-4 h-4 bg-white/20 rounded-full animate-float-particle"
+        style={{ animationDelay: "3s" }}
+      ></div>
+      <div
+        className="absolute top-1/4 left-1/3 w-10 h-10 bg-blue-300/20 rounded-full animate-float-particle"
+        style={{ animationDelay: "0.5s" }}
+      ></div>
 
       {/* Hero Section */}
       <section className="relative px-6 py-20 form-slide-in">
@@ -128,7 +159,10 @@ function Landing() {
             </div>
 
             {/* Feature 2 */}
-            <div className="group form-slide-in" style={{ animationDelay: '0.2s' }}>
+            <div
+              className="group form-slide-in"
+              style={{ animationDelay: "0.2s" }}
+            >
               <div className="glass p-8 rounded-2xl border border-white/20 hover-lift">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform animate-pulse-glow icon-glow">
                   <Trophy className="w-8 h-8 text-white" />
@@ -144,7 +178,10 @@ function Landing() {
             </div>
 
             {/* Feature 3 */}
-            <div className="group form-slide-in" style={{ animationDelay: '0.4s' }}>
+            <div
+              className="group form-slide-in"
+              style={{ animationDelay: "0.4s" }}
+            >
               <div className="glass p-8 rounded-2xl border border-white/20 hover-lift">
                 <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform animate-pulse-glow icon-glow">
                   <Users className="w-8 h-8 text-white" />
@@ -177,19 +214,31 @@ function Landing() {
               <Film className="w-12 h-12 text-red-400 mx-auto mb-3 icon-glow" />
               <h3 className="text-white font-semibold">Movies</h3>
             </div>
-            <div className="glass p-6 rounded-2xl border border-purple-500/30 hover-lift cursor-pointer form-slide-in" style={{ animationDelay: '0.1s' }}>
+            <div
+              className="glass p-6 rounded-2xl border border-purple-500/30 hover-lift cursor-pointer form-slide-in"
+              style={{ animationDelay: "0.1s" }}
+            >
               <Tv className="w-12 h-12 text-purple-400 mx-auto mb-3 icon-glow" />
               <h3 className="text-white font-semibold">TV Shows</h3>
             </div>
-            <div className="glass p-6 rounded-2xl border border-blue-500/30 hover-lift cursor-pointer form-slide-in" style={{ animationDelay: '0.2s' }}>
+            <div
+              className="glass p-6 rounded-2xl border border-blue-500/30 hover-lift cursor-pointer form-slide-in"
+              style={{ animationDelay: "0.2s" }}
+            >
               <Book className="w-12 h-12 text-blue-400 mx-auto mb-3 icon-glow" />
               <h3 className="text-white font-semibold">Books</h3>
             </div>
-            <div className="glass p-6 rounded-2xl border border-green-500/30 hover-lift cursor-pointer form-slide-in" style={{ animationDelay: '0.3s' }}>
+            <div
+              className="glass p-6 rounded-2xl border border-green-500/30 hover-lift cursor-pointer form-slide-in"
+              style={{ animationDelay: "0.3s" }}
+            >
               <Music className="w-12 h-12 text-green-400 mx-auto mb-3 icon-glow" />
               <h3 className="text-white font-semibold">Music</h3>
             </div>
-            <div className="glass p-6 rounded-2xl border border-yellow-500/30 hover-lift cursor-pointer form-slide-in" style={{ animationDelay: '0.4s' }}>
+            <div
+              className="glass p-6 rounded-2xl border border-yellow-500/30 hover-lift cursor-pointer form-slide-in"
+              style={{ animationDelay: "0.4s" }}
+            >
               <Zap className="w-12 h-12 text-yellow-400 mx-auto mb-3 icon-glow" />
               <h3 className="text-white font-semibold">Anime</h3>
             </div>
