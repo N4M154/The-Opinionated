@@ -97,6 +97,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 dotenv.config();
 
@@ -108,6 +109,7 @@ app.use(express.json());
 
 // Routes
 app.use("/", authRoutes);
+app.use("/", reviewRoutes);
 
 // Connect DB and Start Server
 mongoose

@@ -36,6 +36,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import ReviewForm from "./pages/ReviewForm";
 import Landing from "./pages/Landing";
 import Layout from "./components/Layout";
 import Footer from "./components/Footer";
@@ -53,6 +54,10 @@ function App() {
           <Route
             path="/home"
             element={isAuth ? <Home /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/review-form"
+            element={isAuth ? <ReviewForm /> : <Navigate to="/login" />}
           />
           <Route
             path="/profile"
