@@ -48,3 +48,10 @@ export const protectedHome = (req, res) => {
     message: `Welcome ${req.user.email}, you're in the secure zone 🔐`,
   });
 };
+
+export const getUserProfile = (req, res) => {
+  res.json({
+    email: req.user.email,
+    message: "Profile data retrieved successfully",
+  });
+};

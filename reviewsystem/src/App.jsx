@@ -35,6 +35,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 import Landing from "./pages/Landing";
 import Layout from "./components/Layout";
 import Footer from "./components/Footer";
@@ -52,6 +53,10 @@ function App() {
           <Route
             path="/home"
             element={isAuth ? <Home /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/profile"
+            element={isAuth ? <Profile /> : <Navigate to="/login" />}
           />
 
           <Route path="*" element={<Navigate to="/login" />} />
