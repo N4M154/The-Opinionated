@@ -1,10 +1,10 @@
 import express from "express";
-import { 
-  createReview, 
-  getReviews, 
-  getReviewById, 
-  addReaction, 
-  getUserReviews 
+import {
+  createReview,
+  getReviews,
+  getReviewById,
+  addReaction,
+  getUserReviews,
 } from "../controllers/reviewController.js";
 import { authenticateToken } from "../middleware/authMiddleware.js";
 
@@ -22,4 +22,4 @@ router.get("/user/reviews", getUserReviews);
 // Reaction operations
 router.post("/reviews/:reviewId/reactions", addReaction);
 
-export default router; 
+export default router;
