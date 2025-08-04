@@ -7,7 +7,7 @@ export default function SecondaryHeader() {
       <div className="bg-gradient-to-br from-indigo-900 to-sky-400">
         <div className="flex justify-between items-center max-w-6xl mx-auto p-4">
           <div className="flex items-center">
-            <h2 className="font-bold text-2xl font-serif text-sky-300">
+            <h2 className="font-thin text-2xl font-serif text-sky-300">
               CODE_NEST
             </h2>
           </div>

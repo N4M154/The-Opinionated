@@ -9,7 +9,7 @@ function Header() {
     <header className="bg-gradient-to-r from-purple-700 to-indigo-700 text-white dark:text-black p-4 shadow-lg">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <ThemeToggle />
-        <Link to="/home" className="text-2xl font-bold">
+        <Link to="/home" className="text-2xl font-thin">
           ReviewVibe
         </Link>
         <nav className="flex gap-4 items-center">

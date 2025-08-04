@@ -31,13 +31,13 @@ const ThemeToggle = () => {
   return (
     <div
       onClick={toggleTheme}
-      className="w-14 h-8 flex items-center border-solid border-2 border-transparent bg-violet-100 dark:bg-black rounded-full p-1 cursor-pointer transition-colors duration-300 shadow-xl shadow-violet-400 border-violet-300 dark:border-violet-500 dark:shadow-md dark:shadow-violet-700"
+      className="w-14 h-8 flex items-center border-solid border-2  bg-yellow-200 dark:bg-black rounded-full p-1 cursor-pointer transition-colors duration-300 shadow-xl  border-yellow-400 dark:border-yellow-400 dark:shadow-none"
     >
       {/* Sun/Moon Icon */}
       <div
-        className={`w-6 h-6 flex items-center justify-center text-violet-600 dark:text-black rounded-full shadow-md transform transition-transform duration-300 ${
+        className={`w-6 h-6 flex items-center justify-center text-yellow-300 dark:text-black rounded-full shadow-md transform transition-transform duration-300 ${
           theme === "dark"
-            ? "translate-x-6 bg-violet-700"
+            ? "translate-x-6 bg-yellow-300"
             : "translate-x-0 bg-white"
         }`}
       >
