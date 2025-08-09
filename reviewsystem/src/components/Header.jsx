@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
-import { AiFillHome } from "react-icons/ai"; 
+import { AiFillHome } from "react-icons/ai";
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,11 +15,13 @@ function Header() {
   };
 
   return (
-    <header className="w-full border-b-2 border-yellow-300/40 bg-yellow-50 dark:bg-black dark:border-gray-900 py-4 z-50 transition-all duration-300">
+    <header className="w-full border-b-2 border-yellow-100 bg-yellow-50 dark:bg-black dark:border-gray-900 py-4 z-50 transition-all duration-200">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        
         {/* Left - Site name */}
-        <Link to="/home" className="text-xl font-medium text-yellow-400 dark:text-yellow-200">
+        <Link
+          to="/home"
+          className="text-xl font-medium text-yellow-400 dark:text-yellow-200"
+        >
           The <span className="text-black dark:text-white">Opinionated</span>
         </Link>
 
@@ -57,16 +59,15 @@ function Header() {
           )}
           {/* Logout */}
           <button
-  onClick={handleLogout}
-  className="cursor-pointer text-black dark:text-pink-200 rounded-xl hover:scale-110 transition-all duration-300"
-  aria-label="Logout"
->
-  <LogOut className="w-6 h-6" />
-</button>
+            onClick={handleLogout}
+            className="cursor-pointer text-black dark:text-pink-200 rounded-xl hover:scale-110 transition-all duration-200"
+            aria-label="Logout"
+          >
+            <LogOut className="w-6 h-6" />
+          </button>
 
           {/* Theme Toggle */}
           <ThemeToggle />
-          
         </div>
       </div>
     </header>

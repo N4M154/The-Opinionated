@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
 
 export default function ReviewForm() {
   const [formData, setFormData] = useState({
@@ -50,7 +51,7 @@ export default function ReviewForm() {
       } else {
         setError(data.message || "Failed to create review");
       }
-    } catch (err) {
+    } catch {
       setError("Network error. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -58,39 +59,14 @@ export default function ReviewForm() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden py-8 px-4">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600"></div>
-
-      {/* Floating orbs */}
-      <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full animate-float blur-xl"></div>
-      <div
-        className="absolute bottom-20 right-20 w-24 h-24 bg-white/10 rounded-full animate-float blur-xl"
-        style={{ animationDelay: "1s" }}
-      ></div>
-      <div
-        className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full animate-float blur-xl"
-        style={{ animationDelay: "2s" }}
-      ></div>
-
-      {/* Additional floating particles */}
-      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-emerald-300/30 rounded-full animate-float-particle"></div>
-      <div
-        className="absolute bottom-1/3 left-1/3 w-6 h-6 bg-teal-300/30 rounded-full animate-float-particle"
-        style={{ animationDelay: "1.5s" }}
-      ></div>
-      <div
-        className="absolute top-2/3 right-1/4 w-4 h-4 bg-white/20 rounded-full animate-float-particle"
-        style={{ animationDelay: "3s" }}
-      ></div>
-
+    <div className="min-h-screen relative overflow-hidden py-8 px-4 bg-gradient-to-b from-yellow-50 to-pink-100 dark:from-black dark:to-[#18181b]">
       <div className="relative z-10 max-w-2xl mx-auto form-slide-in">
-        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 hover:scale-110 form-fade-in">
+        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 form-fade-in">
           {/* Header with icon */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow animate-bounce">
+            <div className="w-16 h-16 bg-gradient-to-r from-pink-200 to-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4 icon-glow">
               <svg
-                className="w-8 h-8 text-white"
+                className="w-8 h-8 text-pink-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -103,12 +79,19 @@ export default function ReviewForm() {
                 />
               </svg>
             </div>
-            <h1 className="text-3xl font-thin text-white mb-2">
+            <h1 className="text-3xl font-thin text-black dark:text-white mb-2">
               Write a Review
             </h1>
-            <p className="text-white/70">
-              Share your thoughts with the community
-            </p>
+            <p className="text-yellow-400 font-thin">Share your thoughts</p>
+            {/* Close (X) button in header */}
+            <button
+              type="button"
+              onClick={() => navigate("/home")}
+              className="absolute top-6 right-6 bg-white/70 dark:bg-black/50 hover:bg-pink-200 text-pink-500 rounded-full p-2 shadow transition-all duration-200 focus:outline-none"
+              aria-label="Close"
+            >
+              <X className="w-6 h-6" />
+            </button>
           </div>
 
           {error && (
@@ -119,7 +102,7 @@ export default function ReviewForm() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="relative group">
-              <label className="block text-sm font-medium text-white/80 mb-2">
+              <label className="block text-sm font-thin text-black dark:text-white mb-2">
                 Category *
               </label>
               <select
@@ -127,26 +110,26 @@ export default function ReviewForm() {
                 value={formData.category}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus"
+                className="w-full px-4 py-4 bg-white dark:bg-black/50 border border-white/20 rounded-xl text-black dark:text-white font-thin placeholder-black/20 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:pink-400 focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus resize-none"
               >
-                <option value="" className="bg-gray-800">
+                <option value="" className="bg-yellow-50 dark:bg-black/50">
                   Select a category
                 </option>
                 {categories.map((category) => (
                   <option
                     key={category}
                     value={category}
-                    className="bg-gray-800"
+                    className="bg-yellow-50 dark:bg-black/50"
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </option>
                 ))}
               </select>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-50 to-pink-100 dark:from-black/50 dark:to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
             </div>
 
             <div className="relative group">
-              <label className="block text-sm font-medium text-white/80 mb-2">
+              <label className="block text-sm font-thin text-black dark:text-white mb-2">
                 Name of the Work *
               </label>
               <input
@@ -156,13 +139,13 @@ export default function ReviewForm() {
                 onChange={handleChange}
                 required
                 placeholder="e.g., Attack on Titan, The Matrix, Breaking Bad..."
-                className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus"
+                className="w-full px-4 py-4 bg-white dark:bg-black/50 border border-white/20 rounded-xl text-black dark:text-white font-thin placeholder-black/20 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:pink-400 focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus resize-none"
               />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-50 to-pink-100 dark:from-black/50 dark:to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
             </div>
 
             <div className="relative group">
-              <label className="block text-sm font-medium text-white/80 mb-2">
+              <label className="block text-sm font-thin text-black dark:text-white mb-2">
                 Your Review *
               </label>
               <textarea
@@ -172,16 +155,16 @@ export default function ReviewForm() {
                 required
                 rows="8"
                 placeholder="Share your thoughts about this work..."
-                className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm input-focus resize-none"
+                className="w-full px-4 py-4 bg-white dark:bg-black/50 border border-white/20 rounded-xl text-black dark:text-white font-thin placeholder-black/20 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:pink-400 focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus resize-none"
               />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-50 to-pink-100 dark:from-black/50 dark:to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
             </div>
 
             <div className="flex gap-4">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-thin rounded-xl hover:from-emerald-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+                className="flex-1 py-4 bg-black text-white dark:bg-yellow-200 dark:text-black font-thin rounded-xl transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">
@@ -191,14 +174,6 @@ export default function ReviewForm() {
                 ) : (
                   "Post Review"
                 )}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => navigate("/home")}
-                className="flex-1 py-4 bg-gradient-to-r from-gray-500 to-gray-600 text-white font-thin rounded-xl hover:from-gray-600 hover:to-gray-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                Cancel
               </button>
             </div>
           </form>

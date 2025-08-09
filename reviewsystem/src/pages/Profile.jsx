@@ -48,8 +48,6 @@ export default function Profile() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-       
-
         <div className="relative z-10 text-center form-fade-in">
           <div className="glass rounded-2xl p-8 border border-white/20">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-400 mx-auto mb-4"></div>
@@ -62,7 +60,6 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen relative overflow-hidden py-12 bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
-     
       <div className="relative z-10 max-w-md mx-auto px-6 form-slide-in">
         <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 form-fade-in">
           {/* Header with icon */}
@@ -83,8 +80,12 @@ export default function Profile() {
                 />
               </svg>
             </div>
-            <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-2">Profile</h1>
-            <p className="font-thin text-black dark:text-yellow-200">Your account information</p>
+            <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-2">
+              Profile
+            </h1>
+            <p className="font-thin text-black dark:text-yellow-200">
+              Your account information
+            </p>
           </div>
 
           <div className="space-y-6">
@@ -107,7 +108,7 @@ export default function Profile() {
 
             <button
               onClick={handleLogout}
-              className="w-full py-4 bg-yellow-300/50 dark:bg-yellow-200 text-black font-thin rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
+              className="w-full py-4 bg-yellow-300/50 dark:bg-yellow-200 text-black font-thin rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110"
             >
               Logout
             </button>

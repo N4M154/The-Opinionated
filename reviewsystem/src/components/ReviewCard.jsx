@@ -40,7 +40,7 @@ export default function ReviewCard({ review, onReaction }) {
 
   return (
     <>
-      <div className="glass rounded-2xl shadow-2xl p-6 border border-white/20 hover-lift transition-all duration-300">
+      <div className="glass rounded-2xl shadow-2xl p-6 border border-white/20 hover-lift transition-all duration-200">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
@@ -55,13 +55,17 @@ export default function ReviewCard({ review, onReaction }) {
                 {formatDate(review.datePosted)}
               </span>
             </div>
-            <h3 className={`text-lg font-medium text-${getCategoryColor(review.category)} mb-2`}>
+            <h3
+              className={`text-lg font-medium text-${getCategoryColor(review.category)} mb-2`}
+            >
               {review.workName}
             </h3>
             <p className="text-black/60 dark:text-white/50 text-sm mb-3">
               by {review.author?.email || "Unknown"}
             </p>
-            <p className="text-black/60 dark:text-white font-thin line-clamp-3">{review.review}</p>
+            <p className="text-black/60 dark:text-white font-thin line-clamp-3">
+              {review.review}
+            </p>
           </div>
         </div>
 
@@ -70,21 +74,21 @@ export default function ReviewCard({ review, onReaction }) {
             <button
               onClick={() => handleReaction("funny")}
               disabled={isReacting}
-              className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-300 disabled:opacity-50 hover-lift border border-yellow-500/30"
+              className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-yellow-500/30"
             >
               😂 {getReactionCount("funny")}
             </button>
             <button
               onClick={() => handleReaction("creative")}
               disabled={isReacting}
-              className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-blue-500/30 transition-all duration-300 disabled:opacity-50 hover-lift border border-blue-500/30"
+              className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-blue-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-blue-500/30"
             >
               💡 {getReactionCount("creative")}
             </button>
             <button
               onClick={() => handleReaction("cringe")}
               disabled={isReacting}
-              className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-300 disabled:opacity-50 hover-lift border border-red-500/30"
+              className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-red-500/30"
             >
               😬 {getReactionCount("cringe")}
             </button>
@@ -92,7 +96,7 @@ export default function ReviewCard({ review, onReaction }) {
 
           <button
             onClick={() => setShowModal(true)}
-            className="text-pink-400 font-thin hover:scale-110 hover:underline text-sm transition-all duration-300"
+            className="text-pink-400 font-thin hover:scale-110 hover:underline text-sm transition-all duration-200"
           >
             Read Full Review
           </button>
@@ -119,13 +123,15 @@ export default function ReviewCard({ review, onReaction }) {
                 </div>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-black hover:scale-120 text-2xl transition-all duration-300"
+                  className="text-black hover:scale-120 text-2xl transition-all duration-200"
                 >
                   ×
                 </button>
               </div>
 
-              <h2 className={`text-2xl font-thin text-${getCategoryColor(review.category)} mb-2`}>
+              <h2
+                className={`text-2xl font-thin text-${getCategoryColor(review.category)} mb-2`}
+              >
                 {review.workName}
               </h2>
               <p className="text-black/60 dark:text-white/50 mb-4">
@@ -142,21 +148,21 @@ export default function ReviewCard({ review, onReaction }) {
                 <button
                   onClick={() => handleReaction("funny")}
                   disabled={isReacting}
-                  className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-300 disabled:opacity-50 hover-lift border border-yellow-500/30"
+                  className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-yellow-500/30"
                 >
                   😂 {getReactionCount("funny")}
                 </button>
                 <button
                   onClick={() => handleReaction("creative")}
                   disabled={isReacting}
-                  className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-blue-500/30 transition-all duration-300 disabled:opacity-50 hover-lift border border-blue-500/30"
+                  className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-blue-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-blue-500/30"
                 >
                   💡 {getReactionCount("creative")}
                 </button>
                 <button
                   onClick={() => handleReaction("cringe")}
                   disabled={isReacting}
-                  className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-300 disabled:opacity-50 hover-lift border border-red-500/30"
+                  className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-red-500/30"
                 >
                   😬 {getReactionCount("cringe")}
                 </button>

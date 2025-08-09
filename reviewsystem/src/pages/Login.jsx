@@ -28,7 +28,7 @@ export default function Login() {
 
   return (
     <div>
-      <header className="fixed w-full border-b-2 border-yellow-300/40 bg-yellow-100/60 dark:bg-black dark:border-gray-900 backdrop-blur-sm py-4 z-50 transition-all duration-300">
+      <header className="fixed w-full border-b-2 border-yellow-300/40 bg-yellow-100/60 dark:bg-black dark:border-gray-900 backdrop-blur-sm py-4 z-50 transition-all duration-200">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h1 className="text-xl font-light text-black dark:text-yellow-200 ml-5">
             N4M154
@@ -70,34 +70,34 @@ export default function Login() {
               {/* Email input */}
               <div className="relative group">
                 <input
-                  className="w-full px-4 py-4 bg-yellow-100 dark:bg-yellow-200/20 rounded-2xl text-black dark:text-white font-thin placeholder-yellow-400 focus:outline-none transition-all duration-300 backdrop-blur-sm input-focus"
+                  className="w-full px-4 py-4 bg-yellow-100 dark:bg-yellow-200/20 rounded-2xl text-black dark:text-white font-thin placeholder-yellow-400 focus:outline-none transition-all duration-200 backdrop-blur-sm input-focus"
                   placeholder="Email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
               </div>
 
               {/* Password input */}
               <div className="relative group">
                 <input
-                  className="w-full px-4 py-4 bg-yellow-100 dark:bg-yellow-200/20 rounded-2xl text-black dark:text-white font-thin placeholder-yellow-400 focus:outline-none transition-all duration-300 backdrop-blur-sm input-focus"
+                  className="w-full px-4 py-4 bg-yellow-100 dark:bg-yellow-200/20 rounded-2xl text-black dark:text-white font-thin placeholder-yellow-400 focus:outline-none transition-all duration-200 backdrop-blur-sm input-focus"
                   placeholder="Password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
               </div>
 
               {/* Submit button */}
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-4 dark:bg-yellow-200 bg-black text-yellow-200 dark:text-black font-thin rounded-xl  transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+                className="w-full py-4 dark:bg-yellow-200 bg-black text-yellow-200 dark:text-black font-thin rounded-xl  transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
@@ -116,7 +116,7 @@ export default function Login() {
                 Don't have an account?{" "}
                 <a
                   href="/signup"
-                  className="font-bold dark:text-white text-black hover:text-yellow-500 transition-colors duration-300 underline decoration-pink-200 hover:decoration-white"
+                  className="font-bold dark:text-white text-black hover:text-yellow-500 transition-colors duration-200 underline decoration-pink-200 hover:decoration-white"
                 >
                   Sign up here
                 </a>
