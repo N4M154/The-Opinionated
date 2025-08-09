@@ -15,7 +15,7 @@ export default function Profile() {
       }
 
       try {
-        const response = await fetch("http://localhost:4000/profile", {
+        const response = await fetch("http://localhost:5000/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ export default function Profile() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   if (loading) {
@@ -64,7 +64,7 @@ export default function Profile() {
     <div className="min-h-screen relative overflow-hidden py-12 bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
      
       <div className="relative z-10 max-w-md mx-auto px-6 form-slide-in">
-        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 hover-lift form-fade-in">
+        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 form-fade-in">
           {/* Header with icon */}
           <div className="text-center mb-8">
             <div className="w-24 h-24 bg-pink-300 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow animate-bounce">
@@ -88,14 +88,14 @@ export default function Profile() {
           </div>
 
           <div className="space-y-6">
-            <div className="glass bg-white/10 rounded-xl p-4 border border-white/20 hover-lift">
+            <div className="glass bg-white/10 rounded-xl p-4 border border-white/20">
               <label className="block text-sm font-medium text-black mb-2">
                 Email Address
               </label>
               <p className="text-lg text-black font-thin">{userEmail}</p>
             </div>
 
-            <div className="glass bg-white/10 rounded-xl p-4 border border-white/20 hover-lift">
+            <div className="glass bg-white/10 rounded-xl p-4 border border-white/20">
               <label className="block text-sm font-medium text-black mb-2">
                 Account Status
               </label>
@@ -107,7 +107,7 @@ export default function Profile() {
 
             <button
               onClick={handleLogout}
-              className="w-full py-4 bg-yellow-300/50 dark:bg-yellow-200 text-black font-thin rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover-lift"
+              className="w-full py-4 bg-yellow-300/50 dark:bg-yellow-200 text-black font-thin rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
             >
               Logout
             </button>

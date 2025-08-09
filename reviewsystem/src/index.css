@@ -35,11 +35,11 @@ body {
 }
 
 /* Hover effects for interactive elements */
-.hover-lift {
+.hover:scale-110 {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hover-lift:hover {
+.hover:scale-110:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }

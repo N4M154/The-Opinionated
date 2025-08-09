@@ -34,7 +34,7 @@ export default function ReviewForm() {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/reviews", {
+      const response = await fetch("http://localhost:5000/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export default function ReviewForm() {
       ></div>
 
       <div className="relative z-10 max-w-2xl mx-auto form-slide-in">
-        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 hover-lift form-fade-in">
+        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 hover:scale-110 form-fade-in">
           {/* Header with icon */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow animate-bounce">

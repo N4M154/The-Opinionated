@@ -51,17 +51,17 @@ export default function ReviewCard({ review, onReaction }) {
               >
                 {review.category}
               </span>
-              <span className="text-sm text-white/60">
+              <span className="text-sm text-black/60 dark:text-white/50">
                 {formatDate(review.datePosted)}
               </span>
             </div>
-            <h3 className="text-lg font-thin text-white mb-2">
+            <h3 className={`text-lg font-medium text-${getCategoryColor(review.category)} mb-2`}>
               {review.workName}
             </h3>
-            <p className="text-white/70 text-sm mb-3">
+            <p className="text-black/60 dark:text-white/50 text-sm mb-3">
               by {review.author?.email || "Unknown"}
             </p>
-            <p className="text-white/80 line-clamp-3">{review.review}</p>
+            <p className="text-black/60 dark:text-white font-thin line-clamp-3">{review.review}</p>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default function ReviewCard({ review, onReaction }) {
 
           <button
             onClick={() => setShowModal(true)}
-            className="text-violet-300 hover:text-violet-200 text-sm font-medium transition-colors duration-300 hover-lift"
+            className="text-pink-400 font-thin hover:scale-110 hover:underline text-sm transition-all duration-300"
           >
             Read Full Review
           </button>
@@ -101,7 +101,7 @@ export default function ReviewCard({ review, onReaction }) {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 form-fade-in">
+        <div className="fixed inset-0 bg-pink-50/50 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50 form-fade-in">
           <div className="glass rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/20 shadow-2xl">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
@@ -113,27 +113,27 @@ export default function ReviewCard({ review, onReaction }) {
                   >
                     {review.category}
                   </span>
-                  <span className="text-sm text-white/60">
+                  <span className="text-sm text-black/60 dark:text-white/50">
                     {formatDate(review.datePosted)}
                   </span>
                 </div>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-white/60 hover:text-white text-2xl transition-colors duration-300 hover-lift"
+                  className="text-black hover:scale-120 text-2xl transition-all duration-300"
                 >
                   ×
                 </button>
               </div>
 
-              <h2 className="text-2xl font-thin text-white mb-2">
+              <h2 className={`text-2xl font-thin text-${getCategoryColor(review.category)} mb-2`}>
                 {review.workName}
               </h2>
-              <p className="text-white/70 mb-4">
+              <p className="text-black/60 dark:text-white/50 mb-4">
                 by {review.author?.email || "Unknown"}
               </p>
 
               <div className="prose max-w-none">
-                <p className="text-white/80 whitespace-pre-wrap leading-relaxed">
+                <p className="text-black/60 dark:text-white whitespace-pre-wrap leading-relaxed">
                   {review.review}
                 </p>
               </div>

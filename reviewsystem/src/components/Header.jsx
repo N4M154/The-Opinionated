@@ -1,13 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
-import { AiFillHome } from "react-icons/ai"; // Home icon
+import { AiFillHome } from "react-icons/ai"; 
+import { LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   const isAuth = !!localStorage.getItem("token");
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
-    <header className="w-full border-b-2 border-yellow-300/40 bg-yellow-100 dark:bg-black dark:border-gray-900 py-4 z-50 transition-all duration-300">
+    <header className="w-full border-b-2 border-yellow-300/40 bg-yellow-50 dark:bg-black dark:border-gray-900 py-4 z-50 transition-all duration-300">
       <div className="container mx-auto px-4 flex justify-between items-center">
         
         {/* Left - Site name */}
@@ -47,9 +55,18 @@ function Header() {
               Login
             </Link>
           )}
+          {/* Logout */}
+          <button
+  onClick={handleLogout}
+  className="cursor-pointer text-black dark:text-pink-200 rounded-xl hover:scale-110 transition-all duration-300"
+  aria-label="Logout"
+>
+  <LogOut className="w-6 h-6" />
+</button>
 
           {/* Theme Toggle */}
           <ThemeToggle />
+          
         </div>
       </div>
     </header>
