@@ -77,7 +77,6 @@ export default function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
               </div>
 
               {/* Password input */}
@@ -90,7 +89,6 @@ export default function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
               </div>
 
               {/* Submit button */}
