@@ -13,12 +13,10 @@
     animation: walk-animation 2s steps(12) infinite;
     background: url("../assets/cat_tiles.png") 0 0 no-repeat;
   }
-  
-  @media (prefers-color-scheme: dark) {
-    .walking {
-      background: url("../assets/cat_tiles_dark.png") 0 0 no-repeat;
-    }
-  }
+
+ .dark .walking {
+  background: url("../assets/cat_tiles_dark.png") 0 0 no-repeat;
+}
   
   .sitting {
     animation: sit-animation 2s steps(6) infinite;
