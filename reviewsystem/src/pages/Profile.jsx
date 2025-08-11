@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ReviewCard from "../components/ReviewCard";
 
 export default function Profile() {
   const [userEmail, setUserEmail] = useState("");
@@ -70,7 +71,8 @@ export default function Profile() {
   return (
     <div className="min-h-screen flex bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
       {/* Sidebar */}
-      <aside className="w-64 bg-white/20 dark:bg-black/40 p-8 flex flex-col items-center border-r border-white/20">
+      <aside className="w-60 bg-white/20 dark:bg-black/40 p-8 flex flex-col items-center border-r border-white/20">
+        {/* Profile icon */}
         <div className="mb-8">
           <div className="w-20 h-20 bg-pink-300 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow animate-bounce">
             <svg
@@ -89,6 +91,8 @@ export default function Profile() {
             </svg>
           </div>
         </div>
+
+        {/* Navigation buttons */}
         <button
           className={`w-full py-3 mb-2 rounded-lg font-medium ${
             activeTab === "profile"
@@ -118,72 +122,56 @@ export default function Profile() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center">
-        <div className="max-w-xl w-full px-6">
-          <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 form-fade-in">
-            {activeTab === "profile" ? (
-              <>
-                <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-2">
-                  Profile
-                </h1>
-                <p className="font-thin text-black dark:text-yellow-200 mb-8">
-                  Your account information
+      <main className="flex-1 flex items-center justify-center p-6">
+        <div className="max-w-6xl w-full px-6">
+          {activeTab === "profile" ? (
+            <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 form-fade-in bg-white/30 dark:bg-black/30">
+              {/* PROFILE container with unique padding, bg, etc */}
+              <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-6 tracking-wide">
+                Profile
+              </h1>
+              <p className="font-thin text-black dark:text-yellow-200 mb-8 max-w-md leading-relaxed">
+                Your account information
+              </p>
+              <div className="space-y-8">
+                <div>
+                  <label className="block text-sm font-semibold text-black mb-2 dark:text-yellow-300">
+                    Email Address
+                  </label>
+                  <p className="text-lg text-black font-light dark:text-yellow-100">
+                    {userEmail}
+                  </p>
+                </div>
+                <div className="glass bg-white/10 rounded-2xl p-6 border border-white/30 shadow-md flex items-center gap-3">
+                  <div className="w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
+                  <span className="text-yellow-400 font-semibold">Active</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              {/* REVIEWS container with its own padding, bg, etc */}
+              <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-8 tracking-tight">
+                Your Hot Takes
+              </h1>
+
+              {reviews.length === 0 ? (
+                <p className="text-black/60 dark:text-yellow-400 font-light">
+                  You haven't posted anything yet.
                 </p>
-                <div className="space-y-6">
-                  <div className="glass bg-white/10 rounded-xl p-4 border border-white/20">
-                    <label className="block text-sm font-medium text-black mb-2">
-                      Email Address
-                    </label>
-                    <p className="text-lg text-black font-thin">{userEmail}</p>
-                  </div>
-                  <div className="glass bg-white/10 rounded-xl p-4 border border-white/20">
-                    <label className="block text-sm font-medium text-black mb-2">
-                      Account Status
-                    </label>
-                    <div className="flex items-center">
-                      <div className="w-3 h-3 bg-yellow-400 rounded-full mr-2 animate-pulse"></div>
-                      <span className="text-yellow-400 font-medium">
-                        Active
-                      </span>
-                    </div>
-                  </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+                  {reviews.map((review) => (
+                    <ReviewCard
+                      key={review._id}
+                      review={review}
+                      // onReaction={handleReaction}
+                    />
+                  ))}
                 </div>
-              </>
-            ) : (
-              <>
-                <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-2">
-                  Your Posted Reviews
-                </h1>
-                <div className="glass bg-white/10 rounded-xl p-4 border border-white/20">
-                  {reviews.length === 0 ? (
-                    <p className="text-black/60">
-                      You haven't posted any reviews yet.
-                    </p>
-                  ) : (
-                    <ul className="space-y-4">
-                      {reviews.map((review) => (
-                        <li
-                          key={review._id}
-                          className="bg-yellow-100/40 dark:bg-black/30 rounded-lg p-3"
-                        >
-                          <div className="font-semibold text-black dark:text-yellow-200">
-                            {review.workName}
-                          </div>
-                          <div className="text-xs text-black/60 dark:text-yellow-400 mb-1">
-                            {review.category} &middot;{" "}
-                            {new Date(review.datePosted).toLocaleDateString()}
-                          </div>
-                          <div className="text-black dark:text-yellow-100">
-                            {review.review}
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </main>
     </div>
