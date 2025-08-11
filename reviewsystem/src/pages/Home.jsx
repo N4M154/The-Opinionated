@@ -127,12 +127,11 @@ export default function Home() {
       {/* Main section */}
       <section
         ref={mainRef}
-        className="w-full h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-pink-100 dark:from-black dark:to-[#18181b]"
+        className="w-full min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-pink-100 dark:from-black dark:to-[#18181b]"
       >
         <CatAnimations />
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 flex flex-col h-[80vh]">
           {/* Header: typewriter + buttons + filter all inline */}
-          {/* Main flex container */}
           <div className="flex items-center justify-between mb-8 form-slide-in gap-4 flex-nowrap">
             <Typewrite />
 
@@ -210,47 +209,47 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Reviews Grid */}
-          {loading ? (
-            <div className="text-center py-8 form-fade-in">
-              <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-400 mx-auto mb-4"></div>
-                <p className="text-black dark:text-white">Loading reviews...</p>
+          {/* Reviews Grid - scrollable container */}
+          <div className="flex-1 overflow-y-auto hide-scrollbar">
+            {loading ? (
+              <div className="text-center py-8 form-fade-in">
+                <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-400 mx-auto mb-4"></div>
+                  <p className="text-black dark:text-white">
+                    Loading reviews...
+                  </p>
+                </div>
               </div>
-            </div>
-          ) : reviews.length === 0 ? (
-            <div className="text-center py-8 form-fade-in">
-              <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
-                <p className="text-black dark:text-white text-lg mb-4">
-                  No reviews found. Be the first to write one!
-                </p>
-                <button
-                  onClick={() => navigate("/review-form")}
-                  className="bg-yellow-200 text-black dark:text-white px-6 py-3 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                  Write a Review
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 form-fade-in">
-              {/* Reviews Section (Left, 2 columns) */}
-              <div className="lg:col-span-2 grid gap-6 md:grid-cols-2">
-                {reviews.map((review, index) => (
-                  <div
-                    key={review._id}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                    className="form-slide-in"
+            ) : reviews.length === 0 ? (
+              <div className="text-center py-8 form-fade-in">
+                <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
+                  <p className="text-black dark:text-white text-lg mb-4">
+                    No reviews found. Be the first to write one!
+                  </p>
+                  <button
+                    onClick={() => navigate("/review-form")}
+                    className="bg-yellow-200 text-black dark:text-white px-6 py-3 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   >
-                    <ReviewCard review={review} onReaction={handleReaction} />
-                  </div>
-                ))}
+                    Write a Review
+                  </button>
+                </div>
               </div>
-
-              {/* Empty space on right (if you want, remove this div to keep only filter in header) */}
-              <div></div>
-            </div>
-          )}
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 form-fade-in p-6">
+                <div className="lg:col-span-3 grid gap-6 md:grid-cols-2">
+                  {reviews.map((review, index) => (
+                    <div
+                      key={review._id}
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                      className="form-slide-in"
+                    >
+                      <ReviewCard review={review} onReaction={handleReaction} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </div>

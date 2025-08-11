@@ -178,3 +178,12 @@ body {
 .icon-glow:hover {
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
 }
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  behavior: smooth; /* Smooth scrolling */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+  behavior: smooth; /* Smooth scrolling */
+}
