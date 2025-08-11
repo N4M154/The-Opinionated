@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
-import { FaSun } from "react-icons/fa6";
-import { BsMoonStarsFill } from "react-icons/bs";
+import { FaSun } from "react-icons/fa";
+import { IoMdMoon } from "react-icons/io";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState("light");
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    // Check for saved user preference, if any, on component mount
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
-      // If no preference, use system preference
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
@@ -22,34 +21,61 @@ const ThemeToggle = () => {
   }, []);
 
   const toggleTheme = () => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
     const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
+
+    setTimeout(() => {
+      setTheme(newTheme);
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+      localStorage.setItem("theme", newTheme);
+
+      setTimeout(() => setIsAnimating(false), 300);
+    }, 150);
   };
 
   return (
-    <div
-      onClick={toggleTheme}
-      className="w-14 h-8 flex items-center border-solid border-2  bg-yellow-200 dark:bg-black rounded-full p-1 cursor-pointer transition-colors duration-200 shadow-xl  border-yellow-400 dark:border-yellow-400 dark:shadow-none"
-    >
-      {/* Sun/Moon Icon */}
+    <div className="flex flex-col items-center">
+      {/* Seesaw Container */}
       <div
-        className={`w-6 h-6 flex items-center justify-center text-yellow-300 dark:text-black rounded-full shadow-md transform transition-transform duration-200 ${
-          theme === "dark"
-            ? "translate-x-6 bg-yellow-300"
-            : "translate-x-0 bg-white"
-        }`}
+        onClick={toggleTheme}
+        className="relative w-20 h-8 cursor-pointer group"
       >
-        {theme === "light" ? (
-          <span className="text-sm">
-            <FaSun />
-          </span>
-        ) : (
-          <span className="text-sm">
-            <BsMoonStarsFill />
-          </span>
-        )}
+        {/* Seesaw Bar */}
+        <div
+          className={`absolute top-6 left-1 w-10 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-500 ease-in-out transform-gpu origin-center ${
+            theme === "light" ? "rotate-20" : "-rotate-20"
+          } ${isAnimating ? "duration-700" : ""}`}
+        >
+          {/* Sun Icon Left */}
+          <div
+            className={`absolute -top-7 -left-1 transition-all duration-500 ${
+              theme === "light"
+                ? "transform translate-y-2 opacity-100"
+                : "transform translate-y-2 opacity-60"
+            }`}
+          >
+            <FaSun
+              size={18}
+              className={`text-yellow-400 ${theme === "light" ? "animate-bounce" : ""}`}
+            />
+          </div>
+
+          {/* Moon Icon Right */}
+          <div
+            className={`absolute -top-7 -right-1 transition-all duration-500 ${
+              theme === "dark"
+                ? "transform translate-y-2 opacity-100"
+                : "transform translate-y-2 opacity-60"
+            }`}
+          >
+            <IoMdMoon
+              size={18}
+              className={`text-pink-500 ${theme === "dark" ? "animate-bounce" : ""}`}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
