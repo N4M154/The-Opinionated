@@ -1,4 +1,11 @@
 import { useState } from "react";
+import {
+  FaLaugh,
+  FaLightbulb,
+  FaRegGrinSquintTears,
+  FaTimes,
+} from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 
 export default function ReviewCard({ review, onReaction }) {
   const [showModal, setShowModal] = useState(false);
@@ -27,11 +34,15 @@ export default function ReviewCard({ review, onReaction }) {
 
   const getCategoryColor = (category) => {
     const colors = {
-      anime: "bg-pink-500/20 text-pink-300 border-pink-500/30",
-      movie: "bg-blue-500/20 text-blue-300 border-blue-500/30",
-      "tv show": "bg-green-500/20 text-green-300 border-green-500/30",
-      music: "bg-purple-500/20 text-purple-300 border-purple-500/30",
-      book: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
+      anime:
+        "bg-pink-500/20 text-pink-500 border-pink-500/30 dark:text-pink-300",
+      movie:
+        "bg-blue-500/20 text-blue-500 border-blue-500/30 dark:text-blue-300",
+      "tv show":
+        "bg-green-500/20 text-green-500 border-green-500/30 dark:text-green-300",
+      music:
+        "bg-purple-500/20 text-purple-500 border-purple-500/30 dark:text-purple-300",
+      book: "bg-yellow-500/20 text-yellow-500 border-yellow-500/30 dark:text-yellow-300",
     };
     return (
       colors[category] || "bg-gray-500/20 text-gray-300 border-gray-500/30"
@@ -40,18 +51,18 @@ export default function ReviewCard({ review, onReaction }) {
 
   return (
     <>
-      <div className="glass rounded-2xl shadow-2xl p-6 border border-white/20 hover-lift transition-all duration-200">
+      <div className="  rounded-2xl  shadow-xl p-6 border border-white/20 hover-lift transition-all duration-200">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <span
-                className={`px-3 py-1 rounded-full text-xs font-medium border ${getCategoryColor(
+                className={`px-3 py-1 rounded-full text-xs font-thin border ${getCategoryColor(
                   review.category
                 )}`}
               >
                 {review.category}
               </span>
-              <span className="text-sm text-black/60 dark:text-white/50">
+              <span className="text-sm text-black/60 dark:text-white/50 font-thin">
                 {formatDate(review.datePosted)}
               </span>
             </div>
@@ -60,7 +71,7 @@ export default function ReviewCard({ review, onReaction }) {
             >
               {review.workName}
             </h3>
-            <p className="text-black/60 dark:text-white/50 text-sm mb-3">
+            <p className="text-black/60 dark:text-white/50 text-sm mb-3 font-thin">
               by {review.author?.email || "Unknown"}
             </p>
             <p className="text-black/60 dark:text-white font-thin line-clamp-3">
@@ -72,25 +83,33 @@ export default function ReviewCard({ review, onReaction }) {
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
             <button
+              data-tooltip-id="funny-tooltip"
+              data-tooltip-content="Funny"
               onClick={() => handleReaction("funny")}
               disabled={isReacting}
               className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-yellow-500/30"
             >
-              😂 {getReactionCount("funny")}
+              <FaLaugh className="text-base" /> {getReactionCount("funny")}
             </button>
             <button
+              data-tooltip-id="creative-tooltip"
+              data-tooltip-content="Creative"
               onClick={() => handleReaction("creative")}
               disabled={isReacting}
               className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-blue-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-blue-500/30"
             >
-              💡 {getReactionCount("creative")}
+              <FaLightbulb className="text-base" />{" "}
+              {getReactionCount("creative")}
             </button>
             <button
+              data-tooltip-id="cringe-tooltip"
+              data-tooltip-content="Cringe"
               onClick={() => handleReaction("cringe")}
               disabled={isReacting}
               className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-red-500/30"
             >
-              😬 {getReactionCount("cringe")}
+              <FaRegGrinSquintTears className="text-base" />{" "}
+              {getReactionCount("cringe")}
             </button>
           </div>
 
@@ -103,15 +122,35 @@ export default function ReviewCard({ review, onReaction }) {
         </div>
       </div>
 
+      {/* Tooltips for main card */}
+      <Tooltip
+        id="funny-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[60] text-xs py-1 px-2 !bg-yellow-200/80 !text-yellow-700 !rounded-2xl"
+      />
+      <Tooltip
+        id="creative-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[60] text-xs py-1 px-2 !bg-blue-200/80 !text-blue-700 !rounded-2xl"
+      />
+      <Tooltip
+        id="cringe-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[60] text-xs py-1 px-2 !bg-red-200/80 !text-red-700 !rounded-2xl"
+      />
+
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-pink-50/50 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50 form-fade-in">
-          <div className="glass rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/20 shadow-2xl">
+          <div className="  rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/20  shadow-xl">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium border ${getCategoryColor(
+                    className={`px-3 py-1 rounded-full text-xs font-thin border ${getCategoryColor(
                       review.category
                     )}`}
                   >
@@ -123,9 +162,9 @@ export default function ReviewCard({ review, onReaction }) {
                 </div>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-black hover:scale-120 text-2xl transition-all duration-200"
+                  className="text-black dark:text-pink-200 hover:scale-120 text-2xl transition-all duration-200"
                 >
-                  ×
+                  <FaTimes />
                 </button>
               </div>
 
@@ -146,31 +185,59 @@ export default function ReviewCard({ review, onReaction }) {
 
               <div className="flex gap-2 mt-6 pt-4 border-t border-white/20">
                 <button
+                  data-tooltip-id="modal-funny-tooltip"
+                  data-tooltip-content="Funny"
                   onClick={() => handleReaction("funny")}
                   disabled={isReacting}
                   className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-yellow-500/30"
                 >
-                  😂 {getReactionCount("funny")}
+                  <FaLaugh className="text-base" /> {getReactionCount("funny")}
                 </button>
                 <button
+                  data-tooltip-id="modal-creative-tooltip"
+                  data-tooltip-content="Creative"
                   onClick={() => handleReaction("creative")}
                   disabled={isReacting}
                   className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-blue-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-blue-500/30"
                 >
-                  💡 {getReactionCount("creative")}
+                  <FaLightbulb className="text-base" />{" "}
+                  {getReactionCount("creative")}
                 </button>
                 <button
+                  data-tooltip-id="modal-cringe-tooltip"
+                  data-tooltip-content="Cringe"
                   onClick={() => handleReaction("cringe")}
                   disabled={isReacting}
                   className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-red-500/30"
                 >
-                  😬 {getReactionCount("cringe")}
+                  <FaRegGrinSquintTears className="text-base" />{" "}
+                  {getReactionCount("cringe")}
                 </button>
               </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* Tooltips for modal */}
+      <Tooltip
+        id="modal-funny-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[70] text-xs py-1 px-2 !bg-yellow-200/80 !text-yellow-700 !rounded-2xl"
+      />
+      <Tooltip
+        id="modal-creative-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[70] text-xs py-1 px-2 !bg-blue-200/80 !text-blue-700 !rounded-2xl"
+      />
+      <Tooltip
+        id="modal-cringe-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[70] text-xs py-1 px-2 !bg-red-200/80 !text-red-700 !rounded-2xl"
+      />
     </>
   );
 }

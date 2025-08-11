@@ -48,7 +48,7 @@ export function Landing() {
             </p>
             <div className="ml-10 flex flex-col sm:flex-row gap-4 mb-16">
               <Link to="/signin">
-                <button className="group relative rounded-full sm:rounded-full bg-black text-yellow-200 dark:bg-yellow-200 dark:text-black px-8 py-4 text-lg transition-all duration-200 hover:scale-105 shadow-2xl hover:shadow-2xl shadow-black/40 hover:shadow-black/60 ">
+                <button className="group relative rounded-full sm:rounded-full bg-black text-yellow-200 dark:bg-yellow-200 dark:text-black px-8 py-4 text-lg transition-all duration-200 hover:scale-105  shadow-xl hover: shadow-xl shadow-black/40 hover:shadow-black/60 ">
                   <span className="flex items-center gap-2">
                     Let&apos;s Go!
                     <PawPrint className="w-5 h-5 transition-transform group-hover:rotate-12" />

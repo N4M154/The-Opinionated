@@ -59,8 +59,8 @@ export default function Profile() {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
         <div className="relative z-10 text-center form-fade-in">
-          <div className="glass rounded-2xl p-8 border border-white/20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-400 mx-auto mb-4"></div>
+          <div className="  rounded-2xl p-8 border border-white/20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-400 mx-auto mb-4"></div>
             <p className="text-white/80">Loading profile...</p>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function Profile() {
       <aside className="w-60 bg-white/20 dark:bg-black/40 p-8 flex flex-col items-center border-r border-white/20">
         {/* Profile icon */}
         <div className="mb-8">
-          <div className="w-20 h-20 bg-pink-300 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow animate-bounce">
+          <div className="w-20 h-20 bg-pink-300/70 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow">
             <svg
               className="w-10 h-10 text-white"
               fill="none"
@@ -94,9 +94,9 @@ export default function Profile() {
 
         {/* Navigation buttons */}
         <button
-          className={`w-full py-3 mb-2 rounded-lg font-medium ${
+          className={`w-full py-3 mb-2 rounded-lg font-thin ${
             activeTab === "profile"
-              ? "bg-yellow-300 text-black"
+              ? "bg-yellow-200 text-black"
               : "bg-white/10 text-black/60 dark:text-yellow-200"
           }`}
           onClick={() => setActiveTab("profile")}
@@ -104,9 +104,9 @@ export default function Profile() {
           Profile Info
         </button>
         <button
-          className={`w-full py-3 rounded-lg font-medium ${
+          className={`w-full py-3 rounded-lg font-thin ${
             activeTab === "reviews"
-              ? "bg-yellow-300 text-black"
+              ? "bg-yellow-200 text-black"
               : "bg-white/10 text-black/60 dark:text-yellow-200"
           }`}
           onClick={() => setActiveTab("reviews")}
@@ -125,7 +125,7 @@ export default function Profile() {
       <main className="flex-1 flex items-center justify-center p-6">
         <div className="max-w-6xl w-full px-6">
           {activeTab === "profile" ? (
-            <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 form-fade-in bg-white/30 dark:bg-black/30">
+            <div className="rounded-3xl  shadow-xl p-8 border border-white/20 form-fade-in bg-white/30 dark:bg-black/30">
               {/* PROFILE container with unique padding, bg, etc */}
               <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-6 tracking-wide">
                 Profile
@@ -142,7 +142,7 @@ export default function Profile() {
                     {userEmail}
                   </p>
                 </div>
-                <div className="glass bg-white/10 rounded-2xl p-6 border border-white/30 shadow-md flex items-center gap-3">
+                <div className="  bg-white/10 rounded-2xl p-6 border border-white/30 shadow-md flex items-center gap-3">
                   <div className="w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
                   <span className="text-yellow-400 font-semibold">Active</span>
                 </div>

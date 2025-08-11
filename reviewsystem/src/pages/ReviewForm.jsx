@@ -61,7 +61,7 @@ export default function ReviewForm() {
   return (
     <div className="min-h-screen relative overflow-hidden py-8 px-4 bg-gradient-to-b from-yellow-50 to-pink-100 dark:from-black dark:to-[#18181b]">
       <div className="relative z-10 max-w-2xl mx-auto form-slide-in">
-        <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 form-fade-in">
+        <div className="  rounded-3xl  shadow-xl p-8 border border-white/20 form-fade-in">
           {/* Header with icon */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-r from-pink-200 to-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4 icon-glow">
@@ -95,7 +95,7 @@ export default function ReviewForm() {
           </div>
 
           {error && (
-            <div className="glass bg-red-500/20 border border-red-400/30 text-red-200 px-4 py-3 rounded-xl mb-6 animate-bounce">
+            <div className="  bg-red-500/20 border border-red-400/30 text-red-200 px-4 py-3 rounded-xl mb-6 animate-bounce">
               {error}
             </div>
           )}

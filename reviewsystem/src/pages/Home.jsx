@@ -96,7 +96,7 @@ export default function Home() {
           bg-[url('/4.png')] dark:bg-[url('/5.png')]
         "
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-100/10 to-pink-100/10 dark:from-black/10 dark:to-black/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-yellow-100/10 to-pink-100/20 dark:from-black/10 dark:to-black/10"></div>
 
         <div className="relative z-10 px-6">
           <p className="italic text-black text-xl dark:text-white">
@@ -127,7 +127,7 @@ export default function Home() {
       {/* Main section */}
       <section
         ref={mainRef}
-        className="w-full min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-pink-100 dark:from-black dark:to-[#18181b]"
+        className="w-full min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]"
       >
         <CatAnimations />
         <div className="container mx-auto px-4 py-8 flex flex-col h-[80vh]">
@@ -140,7 +140,7 @@ export default function Home() {
             <div className="flex items-center gap-4">
               {/* Filter - smaller width, same height as buttons */}
               <div
-                className="glass rounded-2xl shadow-2xl p-2 border border-white/20 transition-all duration-200 form-fade-in flex items-center gap-3"
+                className="  rounded-2xl  shadow-xl p-2 border border-white/20 transition-all duration-200 form-fade-in flex items-center gap-3"
                 style={{ height: "60px", minWidth: "280px" }} // height matches typical button height, width smaller
               >
                 {/* Category select */}
@@ -149,7 +149,7 @@ export default function Home() {
                   onChange={(e) =>
                     handleFilterChange("category", e.target.value)
                   }
-                  className="px-2 py-1 bg-white/10 border text-sm border-white/20 rounded-xl text-black focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus h-full"
+                  className="px-2 py-1 bg-white/10 border text-sm dark:text-white/70 border-white/20 rounded-xl text-black focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus h-full"
                   style={{ minWidth: "100px" }}
                 >
                   {categories.map((category) => (
@@ -171,7 +171,7 @@ export default function Home() {
                   onChange={(e) =>
                     handleFilterChange("reactionType", e.target.value)
                   }
-                  className="px-2 py-1 bg-white/10 border text-sm border-white/20 rounded-xl text-black focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus h-full"
+                  className="px-2 py-1 bg-white/10 border text-sm dark:text-white/70 border-white/20 rounded-xl text-black focus:outline-none focus:ring-2  focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus h-full"
                   style={{ minWidth: "100px" }}
                 >
                   {reactionTypes.map((type) => (
@@ -213,7 +213,7 @@ export default function Home() {
           <div className="flex-1 overflow-y-auto hide-scrollbar">
             {loading ? (
               <div className="text-center py-8 form-fade-in">
-                <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
+                <div className="  rounded-2xl p-8 border border-white/20 inline-block">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-400 mx-auto mb-4"></div>
                   <p className="text-black dark:text-white">
                     Loading reviews...
@@ -222,7 +222,7 @@ export default function Home() {
               </div>
             ) : reviews.length === 0 ? (
               <div className="text-center py-8 form-fade-in">
-                <div className="glass rounded-2xl p-8 border border-white/20 inline-block">
+                <div className="  rounded-2xl p-8 border border-white/20 inline-block">
                   <p className="text-black dark:text-white text-lg mb-4">
                     No reviews found. Be the first to write one!
                   </p>
