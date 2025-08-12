@@ -42,7 +42,7 @@ export default function Login() {
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-yellow-50 to-yellow-100 dark:from-black dark:to-black">
         {/* Main form container */}
         <div className="relative z-10 w-full max-w-md px-6 form-slide-in">
-          <div className="dark:border-b-2 dark:border-r-2 dark:border-pink-300/40 rounded-3xl p-8  shadow-xl hover:scale-110 form-fade-in">
+          <div className="dark:border-b-2 dark:border-r-2 dark:border-pink-300/40 rounded-3xl p-8  shadow-xl hover:scale-105 transition-all duration-300 form-fade-in">
             {/* Header with icon */}
             <div className="text-center mb-8">
               <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow animate-bounce">

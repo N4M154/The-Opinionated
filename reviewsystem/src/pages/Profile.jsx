@@ -6,8 +6,14 @@ export default function Profile() {
   const [userEmail, setUserEmail] = useState("");
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("profile"); // NEW
+  const [activeTab, setActiveTab] = useState(
+    localStorage.getItem("activeTab") || "profile"
+  );
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+  }, [activeTab]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -52,6 +58,7 @@ export default function Profile() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("activeTab");
     navigate("/");
   };
 
@@ -94,20 +101,20 @@ export default function Profile() {
 
         {/* Navigation buttons */}
         <button
-          className={`w-full py-3 mb-2 rounded-lg font-thin ${
+          className={`w-full py-3 mb-2 rounded-lg font-thin  ${
             activeTab === "profile"
               ? "bg-yellow-200 text-black"
-              : "bg-white/10 text-black/60 dark:text-yellow-200"
+              : "bg-white dark:bg-white/10 text-black/60 dark:text-yellow-200 cursor-pointer"
           }`}
           onClick={() => setActiveTab("profile")}
         >
           Profile Info
         </button>
         <button
-          className={`w-full py-3 rounded-lg font-thin ${
+          className={`w-full py-3 rounded-lg font-thin  ${
             activeTab === "reviews"
               ? "bg-yellow-200 text-black"
-              : "bg-white/10 text-black/60 dark:text-yellow-200"
+              : "bg-white dark:bg-white/10 text-black/60 dark:text-yellow-200 cursor-pointer"
           }`}
           onClick={() => setActiveTab("reviews")}
         >
@@ -127,15 +134,15 @@ export default function Profile() {
           {activeTab === "profile" ? (
             <div className="rounded-3xl  shadow-xl p-8 border border-white/20 form-fade-in bg-white/30 dark:bg-black/30">
               {/* PROFILE container with unique padding, bg, etc */}
-              <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-6 tracking-wide">
+              <h1 className="text-3xl font-thin text-black dark:text-yellow-100 mb-6 tracking-wide">
                 Profile
               </h1>
-              <p className="font-thin text-black dark:text-yellow-200 mb-8 max-w-md leading-relaxed">
+              <p className="font-thin text-black dark:text-pink-50 mb-8 max-w-md leading-relaxed">
                 Your account information
               </p>
               <div className="space-y-8">
                 <div>
-                  <label className="block text-sm font-semibold text-black mb-2 dark:text-yellow-300">
+                  <label className="block text-sm font-thin text-black mb-2 dark:text-yellow-200">
                     Email Address
                   </label>
                   <p className="text-lg text-black font-light dark:text-yellow-100">
@@ -143,15 +150,15 @@ export default function Profile() {
                   </p>
                 </div>
                 <div className="  bg-white/10 rounded-2xl p-6 border border-white/30 shadow-md flex items-center gap-3">
-                  <div className="w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
-                  <span className="text-yellow-400 font-semibold">Active</span>
+                  <div className="w-4 h-4 bg-pink-400 rounded-full animate-pulse"></div>
+                  <span className="text-pink-300 font-semibold">Active</span>
                 </div>
               </div>
             </div>
           ) : (
             <div>
               {/* REVIEWS container with its own padding, bg, etc */}
-              <h1 className="text-3xl font-thin text-black dark:text-yellow-200 mb-8 tracking-tight">
+              <h1 className="text-3xl font-thin text-black dark:text-white mb-8 tracking-tight flex justify-center">
                 Your Hot Takes
               </h1>
 
