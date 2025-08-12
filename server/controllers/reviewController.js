@@ -183,3 +183,42 @@ export const getUserReviews = async (req, res) => {
     });
   }
 };
+
+export const deleteReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+
+    // Find the review first to verify ownership
+    const review = await Review.findById(id);
+
+    if (!review) {
+      return res.status(404).json({
+        success: false,
+        message: "Review not found",
+      });
+    }
+
+    // Check if the requesting user is the author
+    if (review.author.toString() !== userId) {
+      return res.status(403).json({
+        success: false,
+        message: "Not authorized to delete this review",
+      });
+    }
+
+    await Review.findByIdAndDelete(id);
+
+    res.json({
+      success: true,
+      message: "Review deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error deleting review:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error deleting review",
+      error: error.message,
+    });
+  }
+};

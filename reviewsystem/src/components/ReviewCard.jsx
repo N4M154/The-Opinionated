@@ -4,10 +4,16 @@ import {
   FaLightbulb,
   FaRegGrinSquintTears,
   FaTimes,
+  FaTrash,
 } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 
-export default function ReviewCard({ review, onReaction }) {
+export default function ReviewCard({
+  review,
+  onReaction,
+  onDelete,
+  showDelete,
+}) {
   const [showModal, setShowModal] = useState(false);
   const [isReacting, setIsReacting] = useState(false);
 
@@ -49,9 +55,28 @@ export default function ReviewCard({ review, onReaction }) {
     );
   };
 
+  const handleDelete = async () => {
+    if (window.confirm("Are you sure you want to delete this review?")) {
+      try {
+        await onDelete(review._id);
+      } catch (error) {
+        console.error("Error deleting review:", error);
+      }
+    }
+  };
+
   return (
     <>
-      <div className="  rounded-2xl  shadow-xl p-6 border border-white/20 hover-lift transition-all duration-200">
+      <div className="  rounded-2xl  shadow-xl p-6 border border-white/20 hover-lift transition-all duration-200 relative">
+        {showDelete && (
+          <button
+            onClick={handleDelete}
+            className="absolute top-4 right-4 text-red-400 hover:text-red-500 transition-colors duration-200"
+            aria-label="Delete review"
+          >
+            <FaTrash className="text-sm" />
+          </button>
+        )}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">

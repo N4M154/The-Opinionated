@@ -62,6 +62,28 @@ export default function Profile() {
     navigate("/");
   };
 
+  const handleDeleteReview = async (reviewId) => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(
+        `http://localhost:5000/reviews/${reviewId}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (response.ok) {
+        // Remove the deleted review from state
+        setReviews(reviews.filter((review) => review._id !== reviewId));
+      } else {
+        console.error("Failed to delete review");
+      }
+    } catch (error) {
+      console.error("Error deleting review:", error);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
@@ -172,6 +194,8 @@ export default function Profile() {
                     <ReviewCard
                       key={review._id}
                       review={review}
+                      showDelete={true}
+                      onDelete={handleDeleteReview}
                       // onReaction={handleReaction}
                     />
                   ))}

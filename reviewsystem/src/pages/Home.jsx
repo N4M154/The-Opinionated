@@ -243,7 +243,11 @@ export default function Home() {
                       style={{ animationDelay: `${index * 0.1}s` }}
                       className="form-slide-in"
                     >
-                      <ReviewCard review={review} onReaction={handleReaction} />
+                      <ReviewCard
+                        review={review}
+                        showDelete={false}
+                        onReaction={handleReaction}
+                      />
                     </div>
                   ))}
                 </div>
