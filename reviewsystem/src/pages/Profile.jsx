@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
+import { NotebookPen } from "lucide-react";
 
 export default function Profile() {
   const [userEmail, setUserEmail] = useState("");
@@ -185,9 +186,19 @@ export default function Profile() {
               </h1>
 
               {reviews.length === 0 ? (
-                <p className="text-black/60 dark:text-yellow-400 font-light">
-                  You haven't posted anything yet.
-                </p>
+                <div>
+                  <p className="text-black dark:text-pink-200 font-thin flex justify-center items-center gap-4">
+                    You haven't posted anything yet! Leave your first review
+                  </p>
+                  <div className="flex justify-center mt-4">
+                    <button
+                      onClick={() => navigate("/review-form")}
+                      className=" dark:text-yellow-200 text-pink-500 rounded-xl transition-all duration-200 transform hover:scale-105  whitespace-nowrap h-[44px]"
+                    >
+                      <NotebookPen className="w-10 h-10 inline-block mr-2" />
+                    </button>
+                  </div>
+                </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                   {reviews.map((review) => (

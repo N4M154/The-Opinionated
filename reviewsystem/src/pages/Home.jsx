@@ -201,9 +201,9 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => navigate("/review-form")}
-                  className="bg-yellow-200 text-black px-6 py-3 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap h-[44px]"
+                  className=" dark:text-yellow-200 text-pink-500 rounded-xl transition-all duration-200 transform hover:scale-105  whitespace-nowrap h-[44px]"
                 >
-                  <NotebookPen className="w-6 h-6 inline-block mr-2" />
+                  <NotebookPen className="w-10 h-10 inline-block mr-2 cursor-pointer" />
                 </button>
               </div>
             </div>
