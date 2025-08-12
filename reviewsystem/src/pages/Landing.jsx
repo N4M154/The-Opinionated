@@ -121,7 +121,7 @@ export function Landing() {
               <h3 className="text-black dark:text-white font-thin">Music</h3>
             </div>
             <div className=" p-6 hover:scale-120 transition-all duration-200 cursor-pointer form-slide-in">
-              <Zap className="w-12 h-12 text-yellow-200 mx-auto mb-3 icon-glow" />
+              <Star className="w-12 h-12 text-yellow-200 mx-auto mb-3 icon-glow" />
               <h3 className="text-black dark:text-white font-thin">Anime</h3>
             </div>
           </div>

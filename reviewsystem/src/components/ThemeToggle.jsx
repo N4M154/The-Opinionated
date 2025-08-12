@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaSun } from "react-icons/fa";
-import { IoMdMoon } from "react-icons/io";
+import { Lightbulb } from "lucide-react";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState("light");
@@ -36,46 +35,108 @@ const ThemeToggle = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      {/* Seesaw Container */}
+    <div className="flex flex-col items-center -mb-2">
+      {/* Lightbulb Container */}
       <div
         onClick={toggleTheme}
-        className="relative w-20 h-8 cursor-pointer group"
+        className="relative cursor-pointer group p-2 mr-4"
       >
-        {/* Seesaw Bar */}
+        {/* Glow Effect for Light Theme */}
         <div
-          className={`absolute top-6 left-1 w-10 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-500 ease-in-out transform-gpu origin-center ${
-            theme === "light" ? "rotate-20" : "-rotate-20"
-          } ${isAnimating ? "duration-700" : ""}`}
-        >
-          {/* Sun Icon Left */}
-          <div
-            className={`absolute -top-7 -left-1 transition-all duration-500 ${
-              theme === "light"
-                ? "transform translate-y-2 opacity-100"
-                : "transform translate-y-2 opacity-60"
-            }`}
-          >
-            <FaSun
-              size={18}
-              className={`text-yellow-400 ${theme === "light" ? "animate-bounce" : ""}`}
-            />
-          </div>
+          className={`absolute inset-0 rounded-full transition-all duration-500 ease-in-out ${
+            theme === "light"
+              ? "bg-yellow-300/60 blur-xl scale-150 opacity-100"
+              : "bg-transparent scale-100 opacity-0"
+          }`}
+        />
 
-          {/* Moon Icon Right */}
-          <div
-            className={`absolute -top-7 -right-1 transition-all duration-500 ${
-              theme === "dark"
-                ? "transform translate-y-2 opacity-100"
-                : "transform translate-y-2 opacity-60"
+        {/* Secondary Glow */}
+        <div
+          className={`absolute inset-0 rounded-full transition-all duration-700 ease-in-out ${
+            theme === "light"
+              ? "bg-yellow-200/30 blur-lg scale-125 opacity-100"
+              : "bg-transparent scale-100 opacity-0"
+          }`}
+        />
+
+        {/* Lightbulb Icon */}
+        <div className="relative z-10 ">
+          <Lightbulb
+            size={30}
+            className={`transition-all duration-500 ease-in-out transform-gpu ${
+              theme === "light"
+                ? "text-yellow-500 fill-yellow-300/80 scale-105 drop-shadow-lg"
+                : "text-gray-400 dark:text-pink-300/50 fill-transparent scale-100"
+            } ${
+              isAnimating
+                ? "animate-pulse"
+                : theme === "light"
+                  ? "animate-pulse"
+                  : ""
             }`}
-          >
-            <IoMdMoon
-              size={18}
-              className={`text-pink-500 ${theme === "dark" ? "animate-bounce" : ""}`}
+            strokeWidth={theme === "light" ? 1 : 2}
+          />
+        </div>
+
+        {/* Light Rays */}
+        {theme === "light" && (
+          <div className="absolute inset-0 z-0">
+            {/* Ray 1 */}
+            <div
+              className={`absolute top-1 left-1/2 w-0.5 h-3 bg-yellow-300/50 rounded-full transform -translate-x-0.5 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
+            />
+            {/* Ray 2 */}
+            <div
+              className={`absolute bottom-1 left-1/2 w-0.5 h-3 bg-yellow-300/50 rounded-full transform -translate-x-0.5 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
+            />
+            {/* Ray 3 */}
+            <div
+              className={`absolute top-1/2 left-1 w-3 h-0.5 bg-yellow-300/50 rounded-full transform -translate-y-0.5 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
+            />
+            {/* Ray 4 */}
+            <div
+              className={`absolute top-1/2 right-1 w-3 h-0.5 bg-yellow-300/50 rounded-full transform -translate-y-0.5 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
+            />
+            {/* Diagonal Rays */}
+            <div
+              className={`absolute top-2 left-2 w-0.5 h-2 bg-yellow-300/50 rounded-full transform rotate-45 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
+            />
+            <div
+              className={`absolute top-2 right-2 w-0.5 h-2 bg-yellow-300/50 rounded-full transform -rotate-45 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
+            />
+            <div
+              className={`absolute bottom-2 left-2 w-0.5 h-2 bg-yellow-300/50 rounded-full transform -rotate-45 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
+            />
+            <div
+              className={`absolute bottom-2 right-2 w-0.5 h-2 bg-yellow-300/50 rounded-full transform rotate-45 transition-all duration-500 ${
+                theme === "light" ? "opacity-100 animate-pulse" : "opacity-0"
+              }`}
             />
           </div>
-        </div>
+        )}
+
+        {/* Hover Effect */}
+        <div
+          className={`absolute inset-0 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 ${
+            theme === "light"
+              ? "bg-yellow-200/60 scale-125"
+              : "bg-gray-200/10 dark:bg-pink-300/20 scale-110"
+          }`}
+        />
       </div>
     </div>
   );
