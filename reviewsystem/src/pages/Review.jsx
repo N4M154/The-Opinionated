@@ -81,23 +81,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
-      {/* Main section */}
       <section className="w-full min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
         <CatAnimations />
         <div className="container mx-auto px-4 py-8 flex flex-col h-[80vh]">
-          {/* Header: typewriter + buttons + filter all inline */}
           <div className="flex items-center justify-between mb-8 form-slide-in gap-4 flex-nowrap">
             <Typewrite />
 
-            {/* New wrapper for filter + buttons */}
-            {/* Wrapper for filter + buttons */}
             <div className="flex items-center gap-4">
-              {/* Filter - smaller width, same height as buttons */}
               <div
                 className="  rounded-2xl  shadow-xl p-2 border border-white/20 transition-all duration-200 form-fade-in flex items-center gap-3"
-                style={{ height: "60px", minWidth: "280px" }} // height matches typical button height, width smaller
+                style={{ height: "60px", minWidth: "280px" }}
               >
-                {/* Category select */}
                 <select
                   value={filters.category}
                   onChange={(e) =>
@@ -119,7 +113,6 @@ export default function Home() {
                   ))}
                 </select>
 
-                {/* Reaction select */}
                 <select
                   value={filters.reactionType}
                   onChange={(e) =>
@@ -141,7 +134,6 @@ export default function Home() {
                   ))}
                 </select>
 
-                {/* Apply Filters Button inside filter container */}
                 <button
                   onClick={fetchReviews}
                   className="bg-yellow-200 text-black text-sm px-4 py-2 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap h-full"
@@ -151,7 +143,6 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Buttons */}
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => navigate("/review-form")}
@@ -163,7 +154,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Reviews Grid - scrollable container */}
           <div className="flex-1 overflow-y-auto hide-scrollbar">
             {loading ? (
               <div className="text-center py-8 form-fade-in">

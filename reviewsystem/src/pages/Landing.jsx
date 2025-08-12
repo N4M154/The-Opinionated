@@ -1,4 +1,4 @@
-import { Zap, Book, Film, Music, PawPrint, Tv } from "lucide-react";
+import { Zap, Book, Film, Music, PawPrint, Tv, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle";
 
@@ -59,7 +59,7 @@ export function Landing() {
             </div>
             <div className="ml-10 flex justify-left items-center space-x-8 opacity-60 form-fade-in">
               <div className="text-center group cursor-pointer hover:scale-120 transition-all duration-200">
-                <Zap className="w-8 h-8 text-black dark:text-white mx-auto mb-2 group-hover:text-yellow-400 transition-colors icon-glow" />
+                <Star className="w-8 h-8 text-black dark:text-white mx-auto mb-2 group-hover:text-yellow-400 transition-colors icon-glow" />
                 <span className="text-sm text-pink-700 dark:text-pink-300">
                   Anime
                 </span>
