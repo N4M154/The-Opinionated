@@ -4,7 +4,7 @@ export default function CatAnimations() {
   return (
     <div id="root">
       {/* Walking */}
-      <div className="container move">
+      <div className="container move -mt-15">
         <div className="cat walking"></div>
       </div>
 

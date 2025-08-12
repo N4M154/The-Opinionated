@@ -4,6 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 import { AiFillHome } from "react-icons/ai";
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Notebook } from "lucide-react";
 
 function Header() {
   const navigate = useNavigate();
@@ -30,6 +31,11 @@ function Header() {
           {/* Home Icon */}
           <Link to="/home" className="hover:opacity-80 transition-opacity">
             <AiFillHome className="text-2xl text-black dark:text-yellow-200" />
+          </Link>
+
+          {/* Review */}
+          <Link to="/reviews" className="hover:opacity-80 transition-opacity">
+            <Notebook className="w-7 h-7 text-black dark:text-yellow-200" />
           </Link>
 
           {/* Profile / Login */}
