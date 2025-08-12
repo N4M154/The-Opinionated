@@ -72,7 +72,7 @@ export default function ReviewCard({ review, onReaction }) {
               {review.workName}
             </h3>
             <p className="text-black/60 dark:text-white/50 text-sm mb-3 font-thin">
-              by {review.author?.email || "Unknown"}
+              by {review.authorName || "Unknown"}
             </p>
             <p className="text-black/60 dark:text-white font-thin line-clamp-3">
               {review.review}
@@ -174,7 +174,7 @@ export default function ReviewCard({ review, onReaction }) {
                 {review.workName}
               </h2>
               <p className="text-black/60 dark:text-white/50 mb-4">
-                by {review.author?.email || "Unknown"}
+                by {review.authorName || "Unknown"}
               </p>
 
               <div className="prose max-w-none">

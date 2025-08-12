@@ -10,14 +10,15 @@ export default function Footer() {
           {/* Left Section */}
           <div className="flex items-center -ml-[500px] justify-center md:justify-start gap-2 flex-col">
             <div className="flex items-center gap-2 ml-[40px]">
-              <PiSnowflakeThin className="w-4 h-4 -mr-1 text-black dark:text-yellow-200" />
-              <span className="text-sm text-black dark:text-yellow-200 font-light">
+              <PiSnowflakeThin className="w-4 h-4 -mr-1 text-black dark:text-yellow-100" />
+              <span className="text-sm text-black dark:text-yellow-100 font-light">
                 N4M154
               </span>
-              <PiSnowflakeThin className="w-4 h-4 -ml-1 text-black dark:text-yellow-200" />
+              <PiSnowflakeThin className="w-4 h-4 -ml-1 text-black dark:text-yellow-100" />
             </div>
-            <span className="text-[10px] text-black dark:dark:text-yellow-200 font-normal ml-20">
-              © {new Date().getFullYear()} The Opinionated. All rights reserved.
+            <span className="text-[10px] text-black dark:dark:text-yellow-100 font-normal ml-20">
+              © {new Date().getFullYear()} The Opinionated. All rights
+              reserved.
             </span>
           </div>
 
@@ -27,7 +28,7 @@ export default function Footer() {
               href="https://github.com/N4M154"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-black dark:text-yellow-200 hover:text-yellow-400 dark:hover:dark:text-yellow-400 transition-colors"
+              className="flex items-center gap-2 text-black dark:text-yellow-100 hover:text-yellow-400 dark:hover:dark:text-yellow-200 transition-colors"
             >
               <Github className="w-5 h-5" />
               <span className="text-sm font-thin hover:underline">GitHub</span>
@@ -35,7 +36,7 @@ export default function Footer() {
             <div className="mx-4 h-5 w-px bg-black/30 dark:bg-violet-300/30" />
             <a
               href="mailto:namisa.najah.raisa@gmail.com"
-              className="flex items-center gap-2 text-black dark:text-yellow-200 hover:text-yellow-400 dark:hover:text-yellow-400 transition-colors"
+              className="flex items-center gap-2 text-black dark:text-pink-100 hover:text-yellow-400 dark:hover:text-pink-300 transition-colors"
             >
               <Mail className="w-5 h-5" />
               <span className="text-sm font-thin hover:underline">

@@ -7,6 +7,7 @@ export default function ReviewForm() {
     category: "",
     workName: "",
     review: "",
+    authorName: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -101,6 +102,21 @@ export default function ReviewForm() {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="relative group">
+              <label className="block text-sm font-thin text-black dark:text-white mb-2">
+                Your Display Name *
+              </label>
+              <input
+                type="text"
+                name="authorName"
+                value={formData.authorName}
+                onChange={handleChange}
+                required
+                placeholder="How you want to be displayed"
+                className="w-full px-4 py-4 bg-white dark:bg-black/50 border border-white/20 rounded-xl text-black dark:text-white font-thin placeholder-black/20 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:pink-400 focus:border-transparent transition-all duration-200 backdrop-blur-sm input-focus resize-none"
+              />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-50 to-pink-100 dark:from-black/50 dark:to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
+            </div>
             <div className="relative group">
               <label className="block text-sm font-thin text-black dark:text-white mb-2">
                 Category *
