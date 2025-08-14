@@ -101,7 +101,7 @@ export default function Profile() {
   return (
     <div className="min-h-screen flex bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
       {/* Sidebar */}
-      <aside className="w-60 bg-white/20 dark:bg-black/40 p-8 flex flex-col items-center border-r border-white/20">
+      <aside className="w-60 bg-transparent dark:bg-black/40 p-8 flex flex-col items-center">
         {/* Profile icon */}
         <div className="mb-8">
           <div className="w-20 h-20 bg-pink-300/70 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow icon-glow">
@@ -155,7 +155,7 @@ export default function Profile() {
       <main className="flex-1 flex items-center justify-center p-6">
         <div className="max-w-6xl w-full px-6">
           {activeTab === "profile" ? (
-            <div className="rounded-3xl  shadow-xl p-8 border border-white/20 form-fade-in bg-white/30 dark:bg-black/30">
+            <div className="rounded-xl p-8 border border-pink-200 dark:border-gray-400/30 form-fade-in bg-white/30 dark:bg-black/30">
               {/* PROFILE container with unique padding, bg, etc */}
               <h1 className="text-3xl font-thin text-black dark:text-yellow-100 mb-6 tracking-wide">
                 Profile
@@ -172,7 +172,7 @@ export default function Profile() {
                     {userEmail}
                   </p>
                 </div>
-                <div className="  bg-white/10 rounded-2xl p-6 border border-white/30 shadow-md flex items-center gap-3">
+                <div className="  bg-white/10 rounded-2xl p-6 border border-pink-200 dark:border-gray-400/40 flex items-center gap-3">
                   <div className="w-4 h-4 bg-pink-400 rounded-full animate-pulse"></div>
                   <span className="text-pink-300 font-semibold">Active</span>
                 </div>
@@ -180,7 +180,6 @@ export default function Profile() {
             </div>
           ) : (
             <div>
-              {/* REVIEWS container with its own padding, bg, etc */}
               <h1 className="text-3xl font-thin text-black dark:text-white mb-8 tracking-tight flex justify-center">
                 Your Hot Takes
               </h1>
@@ -200,7 +199,7 @@ export default function Profile() {
                   </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {reviews.map((review) => (
                     <ReviewCard
                       key={review._id}

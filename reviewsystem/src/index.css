@@ -257,19 +257,34 @@ body {
 }
 
 .custom-scroll::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 254, 182, 0.2); /* light pink track */
+  background: white;
   border-radius: 10px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-  background: rgba(248, 234, 128, 0.6); /* hot pink thumb */
+  background: rgba(248, 234, 128, 0.6);
   border-radius: 10px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 248, 105, 0.8);
+}
+
+/* dark mode scroll */
+.dark .custom-scroll::-webkit-scrollbar-track {
+  background: rgb(38, 38, 38);
+  border-radius: 10px;
+}
+
+.dark .custom-scroll::-webkit-scrollbar-thumb {
+  background: rgb(76, 76, 76);
+  border-radius: 10px;
+}
+
+.dark .custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(32, 32, 32, 0.8);
 }

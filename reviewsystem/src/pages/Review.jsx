@@ -156,7 +156,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto hide-scrollbar">
+          <div className="flex-1 overflow-y-auto custom-scroll">
             {loading ? (
               <div className="text-center py-8 form-fade-in">
                 <div className="  rounded-2xl p-8 border border-white/20 inline-block">
