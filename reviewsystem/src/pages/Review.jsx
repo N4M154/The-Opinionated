@@ -4,6 +4,7 @@ import ReviewCard from "../components/ReviewCard.jsx";
 import { NotebookPen } from "lucide-react";
 import Typewrite from "../components/TypeWrite.jsx";
 import CatAnimations from "../components/Cat.jsx";
+// import Snow from "../components/Snow/Snow.jsx";
 
 export default function Home() {
   const [reviews, setReviews] = useState([]);
@@ -81,6 +82,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
+      {/* <Snow numFlakes={50} /> */}
       <section className="w-full min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]">
         <CatAnimations />
         <div className="container mx-auto px-4 py-8 flex flex-col h-[80vh]">
@@ -165,22 +167,22 @@ export default function Home() {
                 </div>
               </div>
             ) : reviews.length === 0 ? (
-              <div className="text-center py-8 form-fade-in">
-                <div className="  rounded-2xl p-8 border border-white/20 inline-block">
-                  <p className="text-black dark:text-white text-lg mb-4">
-                    No reviews found. Be the first to write one!
-                  </p>
+              <div>
+                <p className="text-black dark:text-pink-200 font-thin flex justify-center items-center gap-4">
+                  You haven't posted anything yet! Leave your first review
+                </p>
+                <div className="flex justify-center mt-4">
                   <button
                     onClick={() => navigate("/review-form")}
-                    className="bg-yellow-200 text-black dark:text-white px-6 py-3 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    className=" dark:text-yellow-200 text-pink-500 rounded-xl transition-all duration-200 transform hover:scale-105  whitespace-nowrap h-[44px]"
                   >
-                    Write a Review
+                    <NotebookPen className="w-10 h-10 inline-block mr-2" />
                   </button>
                 </div>
               </div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 form-fade-in p-6">
-                <div className="lg:col-span-3 grid gap-6 md:grid-cols-2">
+                <div className="lg:col-span-3 grid gap-6 md:grid-cols-4">
                   {reviews.map((review, index) => (
                     <div
                       key={review._id}

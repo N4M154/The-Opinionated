@@ -48,7 +48,7 @@ export default function ReviewForm() {
       const data = await response.json();
 
       if (response.ok) {
-        navigate("/home");
+        navigate("/reviews");
       } else {
         setError(data.message || "Failed to create review");
       }

@@ -38,8 +38,8 @@ export default function TypewriterCard() {
   }, [charIndex, isDeleting, phrases, phraseIndex]);
 
   return (
-    <div className="rounded-2xl p-6 border border-white/20 bg-pink-50">
-      <h1 className="text-3xl font-thin text-black mb-2">
+    <div>
+      <h1 className="pl-10 text-3xl font-thin dark:text-white text-black mb-2">
         {displayedText}
         <span className="animate-pulse">|</span>
       </h1>

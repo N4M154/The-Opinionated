@@ -246,7 +246,7 @@ export default function Carousel3D() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-200 ${
+            className={`w-3 h-3 rounded-full transition-all duration-200 -mt-12 ${
               index === currentIndex
                 ? "bg-pink-400 scale-125"
                 : "bg-white dark:bg-white/10 hover:bg-white/50"

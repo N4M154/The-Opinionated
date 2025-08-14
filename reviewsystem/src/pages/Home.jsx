@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { ArrowBigDownDash } from "lucide-react";
+import { ArrowBigDownDash, PenLine } from "lucide-react";
 import Carousel from "../components/Carousel.jsx";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -32,7 +33,6 @@ export default function Home() {
         "
       >
         <div className="absolute inset-0 bg-gradient-to-b from-yellow-100/10 to-pink-100/20 dark:from-black/10 dark:to-black/10"></div>
-
         <div className="relative z-10 px-6">
           <p className="italic text-black text-xl dark:text-white">
             Welcome to
@@ -64,7 +64,43 @@ export default function Home() {
         ref={mainRef}
         className="w-full min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-pink-50 dark:from-black dark:to-[#18181b]"
       >
-        <div className="container mx-auto px-4 py-8 flex flex-col h-[80vh]">
+        <div className="absolute inset-0">
+          <div className="absolute bottom-20 left-10 w-72 h-72 bg-pink-400/30 dark:bg-pink-400/10 rounded-full blur-3xl animate-pulse-ring"></div>
+          <div
+            className="absolute bottom-20 right-10 w-96 h-96 bg-violet-400/30 dark:bg-violet-400/10 rounded-full blur-3xl animate-pulse-ring"
+            style={{ animationDelay: "-1.5s" }}
+          ></div>
+          <div
+            className="absolute top-1/2 left-1/2 w-64 h-64 bg-yellow-400/30 dark:bg-yellow-400/10 rounded-full blur-3xl animate-pulse-ring"
+            style={{ animationDelay: "-0.75s" }}
+          ></div>
+        </div>
+
+        {/* Header */}
+        <div className="scale-90 mt-6 self-start px-12">
+          <Link to="/review-form">
+            <div className="group relative inline-flex px-6 py-3 rounded-full glass-card hover:glass-card-hover transition-all duration-500">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-200/50 to-pink-200/50 animate-pulse-ring"></div>
+              <PenLine className="w-6 h-6 text-black dark:text-yellow-200 animate-wave mr-1" />
+              <span className="text-sm font-medium text-black dark:text-pink-200 group-hover:scale-105 transition-all duration-300">
+                Share your thoughts
+              </span>
+            </div>
+          </Link>
+
+          <h1 className="text-[45px] font-bold">
+            <span className="block bg-gradient-to-r from-yellow-300 via-black/70 to-pink-400 dark:via-white bg-clip-text text-transparent">
+              Let the world know your takes
+            </span>
+          </h1>
+
+          <p className="text-lg font-thin text-gray-700 dark:text-gray-300 max-w-xl whitespace-nowrap">
+            Because yelling your opinions into the void is fun, but here… people
+            actually listen.
+          </p>
+        </div>
+
+        <div className="container -mt-5 mx-auto px-4 flex flex-col h-[80vh]">
           <Carousel />
         </div>
       </section>
