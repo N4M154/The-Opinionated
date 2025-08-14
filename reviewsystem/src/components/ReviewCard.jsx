@@ -1,12 +1,7 @@
 import { useState, useRef } from "react";
-import {
-  FaLaugh,
-  FaLightbulb,
-  FaRegGrinSquintTears,
-  FaTimes,
-  FaTrash,
-} from "react-icons/fa";
-import { Tooltip } from "react-tooltip";
+import { FaTimes, FaTrash } from "react-icons/fa";
+import { Laugh, Lightbulb, Heart, HeartCrack, Angry } from "lucide-react";
+// import { Tooltip } from "react-tooltip";
 
 export default function ReviewCard({
   review,
@@ -83,6 +78,19 @@ export default function ReviewCard({
     );
   };
 
+  const getReactionColor = (type) => {
+    const colors = {
+      funny:
+        "bg-green-500/20 text-green-500 dark:text-green-200 border-green-500/30",
+      creative:
+        "bg-yellow-500/20 text-yellow-500 dark:text-yellow-200 border-yellow-500/30",
+      love: "bg-pink-500/20 text-pink-500 dark:text-pink-200 border-pink-500/30",
+      sad: "bg-indigo-500/20 text-indigo-500 dark:text-indigo-200 border-indigo-500/30",
+      angry: "bg-red-500/20 text-red-500 dark:text-red-200 border-red-500/30",
+    };
+    return colors[type] || "bg-gray-500/20 text-gray-300 border-gray-500/30";
+  };
+
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this review?")) {
       try {
@@ -151,69 +159,97 @@ export default function ReviewCard({
         </div>
 
         <div
-          className="flex items-center justify-between"
+          className="flex items-center justify-between mt-4"
           style={{ transform: "translateZ(20px)" }}
         >
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-1">
             <button
-              data-tooltip-id="funny-tooltip"
-              data-tooltip-content="Funny"
+              // data-tooltip-id="funny-tooltip"
+              // data-tooltip-content="Funny"
               onClick={() => handleReaction("funny")}
               disabled={isReacting}
-              className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-200 disabled:opacity-50 border border-yellow-500/30 hover:scale-105"
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("funny")}`}
             >
-              <FaLaugh className="text-base" /> {getReactionCount("funny")}
+              <Laugh className="w-3 h-3" /> {getReactionCount("funny")}
             </button>
             <button
-              data-tooltip-id="creative-tooltip"
-              data-tooltip-content="Creative"
+              // data-tooltip-id="creative-tooltip"
+              // data-tooltip-content="Creative"
               onClick={() => handleReaction("creative")}
               disabled={isReacting}
-              className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-blue-500/30 transition-all duration-200 disabled:opacity-50 border border-blue-500/30 hover:scale-105"
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("creative")}`}
             >
-              <FaLightbulb className="text-base" />{" "}
-              {getReactionCount("creative")}
+              <Lightbulb className="w-3 h-3" /> {getReactionCount("creative")}
             </button>
             <button
-              data-tooltip-id="cringe-tooltip"
-              data-tooltip-content="Cringe"
-              onClick={() => handleReaction("cringe")}
+              // data-tooltip-id="love-tooltip"
+              // data-tooltip-content="Love"
+              onClick={() => handleReaction("love")}
               disabled={isReacting}
-              className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-200 disabled:opacity-50 border border-red-500/30 hover:scale-105"
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("love")}`}
             >
-              <FaRegGrinSquintTears className="text-base" />{" "}
-              {getReactionCount("cringe")}
+              <Heart className="w-3 h-3" /> {getReactionCount("love")}
+            </button>
+            <button
+              // data-tooltip-id="sad-tooltip"
+              // data-tooltip-content="Sad"
+              onClick={() => handleReaction("sad")}
+              disabled={isReacting}
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("sad")}`}
+            >
+              <HeartCrack className="w-3 h-3" /> {getReactionCount("sad")}
+            </button>
+            <button
+              // data-tooltip-id="angry-tooltip"
+              // data-tooltip-content="Angry"
+              onClick={() => handleReaction("angry")}
+              disabled={isReacting}
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("angry")}`}
+            >
+              <Angry className="w-3 h-3" /> {getReactionCount("angry")}
             </button>
           </div>
 
           <button
             onClick={() => setShowModal(true)}
-            className="text-pink-400 font-thin hover:scale-110 hover:underline text-sm transition-all duration-200"
+            className="text-black dark:text-white font-thin hover:scale-110 hover:underline text-xs transition-all duration-200 whitespace-nowrap"
           >
-            Read Full Review
+            Read More
           </button>
         </div>
       </div>
 
-      {/* Tooltips for main card */}
-      <Tooltip
+      {/* Tooltips for main card - Commented Out */}
+      {/* <Tooltip
         id="funny-tooltip"
         place="top"
         effect="solid"
         className="z-[60] text-xs py-1 px-2 !bg-yellow-200/80 !text-yellow-700 !rounded-2xl"
-      />
-      <Tooltip
+      /> */}
+      {/* <Tooltip
         id="creative-tooltip"
         place="top"
         effect="solid"
         className="z-[60] text-xs py-1 px-2 !bg-blue-200/80 !text-blue-700 !rounded-2xl"
-      />
-      <Tooltip
-        id="cringe-tooltip"
+      /> */}
+      {/* <Tooltip
+        id="love-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[60] text-xs py-1 px-2 !bg-pink-200/80 !text-pink-700 !rounded-2xl"
+      /> */}
+      {/* <Tooltip
+        id="sad-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[60] text-xs py-1 px-2 !bg-indigo-200/80 !text-indigo-700 !rounded-2xl"
+      /> */}
+      {/* <Tooltip
+        id="angry-tooltip"
         place="top"
         effect="solid"
         className="z-[60] text-xs py-1 px-2 !bg-red-200/80 !text-red-700 !rounded-2xl"
-      />
+      /> */}
 
       {/* Modal */}
       {showModal && (
@@ -258,33 +294,50 @@ export default function ReviewCard({
 
               <div className="flex gap-2 mt-6 pt-4 border-t border-white/20">
                 <button
-                  data-tooltip-id="modal-funny-tooltip"
-                  data-tooltip-content="Funny"
+                  // data-tooltip-id="modal-funny-tooltip"
+                  // data-tooltip-content="Funny"
                   onClick={() => handleReaction("funny")}
                   disabled={isReacting}
-                  className="flex items-center gap-1 px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-yellow-500/30"
+                  className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("funny")}`}
                 >
-                  <FaLaugh className="text-base" /> {getReactionCount("funny")}
+                  <Laugh className="text-base" /> {getReactionCount("funny")}
                 </button>
                 <button
-                  data-tooltip-id="modal-creative-tooltip"
-                  data-tooltip-content="Creative"
+                  // data-tooltip-id="modal-creative-tooltip"
+                  // data-tooltip-content="Creative"
                   onClick={() => handleReaction("creative")}
                   disabled={isReacting}
-                  className="flex items-center gap-1 px-3 py-2 bg-blue-500/20 text-blue-300 rounded-xl text-sm hover:bg-yellow-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-blue-500/30"
+                  className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("creative")}`}
                 >
-                  <FaLightbulb className="text-base" />{" "}
+                  <Lightbulb className="text-base" />{" "}
                   {getReactionCount("creative")}
                 </button>
                 <button
-                  data-tooltip-id="modal-cringe-tooltip"
-                  data-tooltip-content="Cringe"
-                  onClick={() => handleReaction("cringe")}
+                  // data-tooltip-id="modal-love-tooltip"
+                  // data-tooltip-content="Love"
+                  onClick={() => handleReaction("love")}
                   disabled={isReacting}
-                  className="flex items-center gap-1 px-3 py-2 bg-red-500/20 text-red-300 rounded-xl text-sm hover:bg-red-500/30 transition-all duration-200 disabled:opacity-50 hover-lift border border-red-500/30"
+                  className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("love")}`}
                 >
-                  <FaRegGrinSquintTears className="text-base" />{" "}
-                  {getReactionCount("cringe")}
+                  <Heart className="text-base" /> {getReactionCount("love")}
+                </button>
+                <button
+                  // data-tooltip-id="modal-sad-tooltip"
+                  // data-tooltip-content="Sad"
+                  onClick={() => handleReaction("sad")}
+                  disabled={isReacting}
+                  className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("sad")}`}
+                >
+                  <HeartCrack className="text-base" /> {getReactionCount("sad")}
+                </button>
+                <button
+                  // data-tooltip-id="modal-angry-tooltip"
+                  // data-tooltip-content="Angry"
+                  onClick={() => handleReaction("angry")}
+                  disabled={isReacting}
+                  className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm hover:scale-105 transition-all duration-200 disabled:opacity-50 border ${getReactionColor("angry")}`}
+                >
+                  <Angry className="text-base" /> {getReactionCount("angry")}
                 </button>
               </div>
             </div>
@@ -292,25 +345,37 @@ export default function ReviewCard({
         </div>
       )}
 
-      {/* Tooltips for modal */}
-      <Tooltip
+      {/* Tooltips for modal - Commented Out */}
+      {/* <Tooltip
         id="modal-funny-tooltip"
         place="top"
         effect="solid"
         className="z-[70] text-xs py-1 px-2 !bg-yellow-200/80 !text-yellow-700 !rounded-2xl"
-      />
-      <Tooltip
+      /> */}
+      {/* <Tooltip
         id="modal-creative-tooltip"
         place="top"
         effect="solid"
         className="z-[70] text-xs py-1 px-2 !bg-blue-200/80 !text-blue-700 !rounded-2xl"
-      />
-      <Tooltip
-        id="modal-cringe-tooltip"
+      /> */}
+      {/* <Tooltip
+        id="modal-love-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[70] text-xs py-1 px-2 !bg-pink-200/80 !text-pink-700 !rounded-2xl"
+      /> */}
+      {/* <Tooltip
+        id="modal-sad-tooltip"
+        place="top"
+        effect="solid"
+        className="z-[70] text-xs py-1 px-2 !bg-indigo-200/80 !text-indigo-700 !rounded-2xl"
+      /> */}
+      {/* <Tooltip
+        id="modal-angry-tooltip"
         place="top"
         effect="solid"
         className="z-[70] text-xs py-1 px-2 !bg-red-200/80 !text-red-700 !rounded-2xl"
-      />
+      /> */}
     </>
   );
 }

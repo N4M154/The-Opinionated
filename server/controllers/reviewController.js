@@ -118,7 +118,7 @@ export const addReaction = async (req, res) => {
     const { reactionType } = req.body;
     const userId = req.user.id;
 
-    if (!["funny", "creative", "cringe"].includes(reactionType)) {
+    if (!["funny", "creative", "love", "sad", "angry"].includes(reactionType)) {
       return res.status(400).json({
         success: false,
         message: "Invalid reaction type",

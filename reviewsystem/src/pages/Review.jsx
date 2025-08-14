@@ -16,7 +16,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const categories = ["", "anime", "movie", "tv show", "music", "book"];
-  const reactionTypes = ["", "funny", "creative", "cringe"];
+  const reactionTypes = ["", "funny", "creative", "love", "sad", "angry"];
 
   useEffect(() => {
     const token = localStorage.getItem("token");
