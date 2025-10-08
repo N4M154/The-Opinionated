@@ -62,4 +62,12 @@
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
 }
