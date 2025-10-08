@@ -4,7 +4,8 @@
 
 @layer utilities {
   @keyframes pulse-ring {
-    0%, 100% {
+    0%,
+    100% {
       transform: scale(1);
       opacity: 1;
     }
@@ -15,7 +16,8 @@
   }
 
   @keyframes wave {
-    0%, 100% {
+    0%,
+    100% {
       transform: rotate(0deg);
     }
     25% {
@@ -27,7 +29,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
+    0%,
+    100% {
       box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
     }
     50% {

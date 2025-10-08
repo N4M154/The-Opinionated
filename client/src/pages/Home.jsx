@@ -89,7 +89,7 @@ export default function Home() {
           </Link>
 
           <h1 className="text-[45px] font-bold">
-            <span className="block bg-gradient-to-r from-yellow-300 via-black/70 to-pink-400 dark:via-white bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-300 via-black/70 to-pink-400 dark:via-white dark:to-pink-400 bg-clip-text text-transparent">
               Let the world know your takes
             </span>
           </h1>
