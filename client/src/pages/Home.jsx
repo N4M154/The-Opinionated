@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { ArrowBigDownDash, PenLine } from "lucide-react";
-import Carousel from "../components/Carousel.jsx";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -98,10 +97,6 @@ export default function Home() {
             Because yelling your opinions into the void is fun, but here… people
             actually listen.
           </p>
-        </div>
-
-        <div className="container -mt-5 mx-auto px-4 flex flex-col h-[80vh]">
-          <Carousel />
         </div>
       </section>
     </div>
